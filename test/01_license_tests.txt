@@ -1,0 +1,280 @@
+=============================================================
+TEST 1: LICENSE SYSTEM TESTS
+=============================================================
+
+--- Test 1a: Empty input (3 attempts) ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [i] No valid license found on this system.
+
+  Please enter your 16-digit DeelTech license key.
+    (Format: XXXXXXXXXXXXXXXX)
+
+  License Key:   [✗] Key must be exactly 16 characters. (2 attempts remaining)
+  License Key:   [✗] Key must be exactly 16 characters. (1 attempts remaining)
+  License Key:   [✗] Key must be exactly 16 characters. (0 attempts remaining)
+
+  [✗] Too many failed attempts. Access denied.
+  [i] Contact DeelTech Solutions support for a valid license.
+
+
+EXIT CODE: 0
+
+--- Test 1b: Wrong short key ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [i] No valid license found on this system.
+
+  Please enter your 16-digit DeelTech license key.
+    (Format: XXXXXXXXXXXXXXXX)
+
+  License Key:   [✗] Key must be exactly 16 characters. (2 attempts remaining)
+  License Key:   [✗] Key must be exactly 16 characters. (1 attempts remaining)
+  License Key:   [✗] Key must be exactly 16 characters. (0 attempts remaining)
+
+  [✗] Too many failed attempts. Access denied.
+  [i] Contact DeelTech Solutions support for a valid license.
+
+
+EXIT CODE: 0
+
+--- Test 1c: Wrong 16-char key (3 attempts) ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [i] No valid license found on this system.
+
+  Please enter your 16-digit DeelTech license key.
+    (Format: XXXXXXXXXXXXXXXX)
+
+  License Key:   [✗] Invalid license key. (2 attempts remaining)
+  License Key:   [✗] Invalid license key. (1 attempts remaining)
+  License Key:   [✗] Invalid license key. (0 attempts remaining)
+
+  [✗] Too many failed attempts. Access denied.
+  [i] Contact DeelTech Solutions support for a valid license.
+
+
+EXIT CODE: 0
+
+--- Test 1d: Correct key ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [i] No valid license found on this system.
+
+  Please enter your 16-digit DeelTech license key.
+    (Format: XXXXXXXXXXXXXXXX)
+
+  License Key: 
+  [✓] License activated successfully!
+  [i] License file saved. You will not be prompted again.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  [i] Thank you for using DeelTech Solutions.
+  Goodbye!
+
+
+EXIT CODE: 0
+
+--- Test 1e: Pre-existing valid license file ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  [i] Thank you for using DeelTech Solutions.
+  Goodbye!
+
+
+EXIT CODE: 0
+
+--- Test 1f: Corrupted license file ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✗] License file is corrupted or invalid.
+  [i] No valid license found on this system.
+
+  Please enter your 16-digit DeelTech license key.
+    (Format: XXXXXXXXXXXXXXXX)
+
+  License Key: 
+  [✓] License activated successfully!
+  [i] License file saved. You will not be prompted again.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  [i] Thank you for using DeelTech Solutions.
+  Goodbye!
+
+
+EXIT CODE: 0
+
+--- Test 1g: 3-strike lockout ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [i] No valid license found on this system.
+
+  Please enter your 16-digit DeelTech license key.
+    (Format: XXXXXXXXXXXXXXXX)
+
+  License Key:   [✗] Invalid license key. (2 attempts remaining)
+  License Key:   [✗] Invalid license key. (1 attempts remaining)
+  License Key:   [✗] Invalid license key. (0 attempts remaining)
+
+  [✗] Too many failed attempts. Access denied.
+  [i] Contact DeelTech Solutions support for a valid license.
+
+
+EXIT CODE: 0
+

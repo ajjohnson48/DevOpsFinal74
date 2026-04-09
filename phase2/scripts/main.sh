@@ -181,8 +181,8 @@ check_download_tool() {
     elif command -v wget &>/dev/null; then
         echo "wget"
     else
-        print_error "Neither curl nor wget is installed."
-        print_info "Install one with: sudo apt install curl"
+        print_error "Neither curl nor wget is installed." >&2
+        print_info "Install one with: sudo apt install curl" >&2
         return 1
     fi
 }
@@ -190,14 +190,14 @@ check_download_tool() {
 # Scrape the TNTech faculty page and return parsed names.
 # Each line of output is: Firstname Lastname
 scrape_faculty() {
-    print_header "Scraping TNTech CS Faculty & Staff"
+    print_header "Scraping TNTech CS Faculty & Staff" >&2
 
     local tool
     tool=$(check_download_tool) || return 1
 
-    print_info "Downloading faculty page..."
-    print_info "URL: ${FACULTY_URL}"
-    echo ""
+    print_info "Downloading faculty page..." >&2
+    print_info "URL: ${FACULTY_URL}" >&2
+    echo "" >&2
 
     local html
     if [[ "$tool" == "curl" ]]; then
@@ -207,14 +207,14 @@ scrape_faculty() {
     fi
 
     if [[ -z "$html" ]]; then
-        print_error "Failed to download the faculty page."
-        print_info "Check your internet connection and try again."
+        print_error "Failed to download the faculty page." >&2
+        print_info "Check your internet connection and try again." >&2
         return 1
     fi
 
-    print_success "Page downloaded successfully."
-    print_info "Parsing faculty and staff names..."
-    echo ""
+    print_success "Page downloaded successfully." >&2
+    print_info "Parsing faculty and staff names..." >&2
+    echo "" >&2
 
     # Parse names from the HTML.
     # Faculty names appear in two patterns on this page:
@@ -295,9 +295,21 @@ create_user() {
     local first="$1"
     local last="$2"
 
+    # Validate names contain only safe characters (letters, hyphens, apostrophes)
+    if [[ ! "$first" =~ ^[a-zA-Z\'-]+$ ]] || [[ ! "$last" =~ ^[a-zA-Z\'-]+$ ]]; then
+        print_error "Invalid characters in name '${first} ${last}'. Only letters, hyphens, and apostrophes are allowed."
+        return 1
+    fi
+
     # Generate username: first.last (all lowercase)
     local username
     username=$(echo "${first}.${last}" | tr '[:upper:]' '[:lower:]')
+
+    # Validate username length (Linux max is 32 characters)
+    if [[ ${#username} -gt 32 ]]; then
+        print_error "Generated username '${username}' exceeds 32-character limit."
+        return 1
+    fi
 
     # Generate password: firstnamelastnameDEELTECH (preserve original casing)
     local password="${first}${last}${PASSWORD_SUFFIX}"
@@ -384,7 +396,7 @@ scrape_and_create() {
     display_names "$names"
 
     echo -ne "  ${YELLOW}Proceed with user account creation? (y/n): ${RESET}"
-    read -r confirm
+    read -r confirm || confirm="n"
     if [[ "$confirm" =~ ^[Yy]$ ]]; then
         batch_create_users "$names"
     else
@@ -401,9 +413,9 @@ manual_add_user() {
     print_header "Manual User Account Creation"
 
     echo -ne "  ${CYAN}Enter first name: ${RESET}"
-    read -r first_name
+    read -r first_name || { echo ""; print_info "End of input detected."; return 1; }
     echo -ne "  ${CYAN}Enter last name:  ${RESET}"
-    read -r last_name
+    read -r last_name || { echo ""; print_info "End of input detected."; return 1; }
 
     # Validate input
     if [[ -z "$first_name" || -z "$last_name" ]]; then
@@ -415,6 +427,16 @@ manual_add_user() {
     first_name=$(echo "$first_name" | sed 's/^[ \t]*//;s/[ \t]*$//')
     last_name=$(echo "$last_name" | sed 's/^[ \t]*//;s/[ \t]*$//')
 
+    # Validate names contain only safe characters
+    if [[ ! "$first_name" =~ ^[a-zA-Z\'-]+$ ]]; then
+        print_error "First name contains invalid characters. Only letters, hyphens, and apostrophes are allowed."
+        return 1
+    fi
+    if [[ ! "$last_name" =~ ^[a-zA-Z\'-]+$ ]]; then
+        print_error "Last name contains invalid characters. Only letters, hyphens, and apostrophes are allowed."
+        return 1
+    fi
+
     local username
     username=$(echo "${first_name}.${last_name}" | tr '[:upper:]' '[:lower:]')
     local password="${first_name}${last_name}${PASSWORD_SUFFIX}"
@@ -424,7 +446,7 @@ manual_add_user() {
     echo -e "  ${WHITE}Password:${RESET} ${password}"
     echo ""
     echo -ne "  ${YELLOW}Create this user? (y/n): ${RESET}"
-    read -r confirm
+    read -r confirm || confirm="n"
 
     if [[ "$confirm" =~ ^[Yy]$ ]]; then
         create_user "$first_name" "$last_name"
@@ -494,11 +516,13 @@ main() {
     # Part 4: License check (must pass before anything else)
     check_license
 
+    trap 'echo ""; print_info "Interrupted. Exiting."; exit 130' INT TERM
+
     # Main menu loop
     while true; do
         show_menu
         echo -ne "  ${CYAN}Select an option [1-4]: ${RESET}"
-        read -r choice
+        read -r choice || { echo ""; print_info "End of input detected. Exiting."; exit 0; }
 
         # Default to option 1 if user just presses Enter
         choice=${choice:-1}
@@ -527,7 +551,7 @@ main() {
 
         echo ""
         echo -ne "  ${DIM}Press Enter to continue...${RESET}"
-        read -r
+        read -r || exit 0
     done
 }
 

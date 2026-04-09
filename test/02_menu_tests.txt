@@ -1,0 +1,443 @@
+=============================================================
+TEST 2: MENU NAVIGATION TESTS
+=============================================================
+
+--- Test 2a: Invalid choice '0' ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]:   [✗] Invalid option. Please select 1-4.
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  [i] Thank you for using DeelTech Solutions.
+  Goodbye!
+
+
+--- Test 2b: Invalid choice '5' ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]:   [✗] Invalid option. Please select 1-4.
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  [i] Thank you for using DeelTech Solutions.
+  Goodbye!
+
+
+--- Test 2c: Invalid choice '-1' ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]:   [✗] Invalid option. Please select 1-4.
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  [i] Thank you for using DeelTech Solutions.
+  Goodbye!
+
+
+--- Test 2d: Invalid choice 'abc' ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]:   [✗] Invalid option. Please select 1-4.
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  [i] Thank you for using DeelTech Solutions.
+  Goodbye!
+
+
+--- Test 2e: Empty input (defaults to option 1) ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  ┌──────────────────────────────────────────────────────────┐
+  │            Scraping TNTech CS Faculty & Staff            │
+  └──────────────────────────────────────────────────────────┘
+
+  [i] Downloading faculty page...
+  [i] URL: https://www.tntech.edu/engineering/programs/csc/faculty-and-staff.php
+
+  [✓] Page downloaded successfully.
+  [i] Parsing faculty and staff names...
+
+  ──────────────────────────────────────────────────────────
+  #    First Name           Last Name           
+  ──────────────────────────────────────────────────────────
+  1    Gerald               Gannod              
+  2    Maanak               Gupta               
+  3    William              Eberle              
+  4    Sheikh               Ghafoor             
+  5    Stacy                Prowell             
+  6    Anthony              Skjellum            
+  7    Doug                 Talbert             
+  8    Amr                  Hilal               
+  9    Muhammad             Ismail              
+  10   Michael              Rogers              
+  11   Susmit               Shannigrahi         
+  12   Amani                Altarawneh          
+  13   Prantar              Ghosh               
+  14   MD                   Nine                
+  15   Mir                  Pritom              
+  16   Jesse                Roberts             
+  17   Eric                 Brown               
+  18   Travis               Brummett            
+  19   April                Crockett            
+  20   Benjamin             Burchfield          
+  21   Beata                Kubiak              
+  22   Jacob                Strickler           
+  23   Regis                Billings            
+  24   Cristina             Radian              
+  25   Callie               Stewart             
+  26   Brandon              Vandergriff         
+  27   Barbara              Gannod              
+  28   Dennis               Jump                
+  29   Travis               Lee                 
+  30   Riley                Shipley             
+  31   David                Elizandro           
+  32   Martha               Kosa                
+  33   Ambareen             Siraj               
+  34   Mary                 Daniels             
+  35   Robin                Eberle              
+  36   Danyelle             Hawkins             
+  37   Jennifer             Murphy              
+  38   Amy                  Davis               
+  39   Emily                Disbrow             
+  40   Rebecca              Hahnert             
+  41   Sonya                Haney               
+  42   Corbin               Cawood              
+  ──────────────────────────────────────────────────────────
+  Total: 42 faculty/staff members found.
+
+  Proceed with user account creation? (y/n):   [i] Account creation cancelled.
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  [i] Thank you for using DeelTech Solutions.
+  Goodbye!
+
+
+--- Test 2f: Special chars '!@#' ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]:   [✗] Invalid option. Please select 1-4.
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  [i] Thank you for using DeelTech Solutions.
+  Goodbye!
+
+
+--- Test 2g: Valid option 3 (View Users) ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  ┌──────────────────────────────────────────────────────────┐
+  │              DeelTech Created User Accounts              │
+  └──────────────────────────────────────────────────────────┘
+
+  [i] No users have been created yet.
+  [i] Log file: /var/log/deeltech_created_users.log
+
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  [i] Thank you for using DeelTech Solutions.
+  Goodbye!
+
+
+--- Test 2h: Valid option 4 (Exit) ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  [i] Thank you for using DeelTech Solutions.
+  Goodbye!
+
+

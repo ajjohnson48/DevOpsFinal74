@@ -1,0 +1,138 @@
+=============================================================
+TEST 8: REGRESSION TEST SUMMARY
+=============================================================
+Date: 2026-04-09
+Script: /home/user/school/devops/final/scripts/main.sh
+Tester: Automated QA (regression after bug fixes)
+=============================================================
+
+--------------------------------------------------------------
+SECTION 1: TEST RESULTS BY CATEGORY
+--------------------------------------------------------------
+
+--- Test 1: License System (7 tests) ---
+  [PASS] 1a. Empty input (3 attempts) - Correctly rejects, shows "Key must be exactly 16 characters", locks out after 3 tries
+  [PASS] 1b. Wrong short key ("ABC") - Correctly rejects with length error
+  [PASS] 1c. Wrong 16-char key (3 attempts) - Correctly rejects with "Invalid license key", locks out after 3
+  [PASS] 1d. Correct key (5A7B9C1D3E5F7G9H) - Accepted, license file saved, menu shown
+  [PASS] 1e. Pre-existing valid license - Skips prompt, shows "Valid license detected. Access granted."
+  [PASS] 1f. Corrupted license file - Detects corruption, prompts for new key, accepts correct key
+  [PASS] 1g. 3-strike lockout - Shows "Too many failed attempts. Access denied." after 3 bad keys
+
+--- Test 2: Menu Navigation (8 tests) ---
+  [PASS] 2a. Invalid choice '0' - Shows "Invalid option. Please select 1-4."
+  [PASS] 2b. Invalid choice '5' - Shows "Invalid option. Please select 1-4."
+  [PASS] 2c. Invalid choice '-1' - Shows "Invalid option. Please select 1-4."
+  [PASS] 2d. Invalid choice 'abc' - Shows "Invalid option. Please select 1-4."
+  [PASS] 2e. Empty input (Enter) - Defaults to option 1 (scrape), shows faculty list
+  [PASS] 2f. Special chars '!@#' - Shows "Invalid option. Please select 1-4."
+  [PASS] 2g. Valid option 3 (View Users) - Shows user table (initially empty)
+  [PASS] 2h. Valid option 4 (Exit) - Shows "Thank you" / "Goodbye!" and exits cleanly
+
+--- Test 3: Web Scraper (4 tests) ---
+  [PASS] 3a. Full scrape & create - Scraped 42 names, created 42 users, 0 failures
+  [PASS] 3b. Name count verification - Exactly 42 clean names (standalone count verified)
+  [PASS] 3c. Garbage check - No status messages, box-drawing chars, or pollution in name list
+  [PASS] 3d. Second scrape (skip existing) - All 42 users skipped ("already exists"), 0 created
+
+--- Test 4: Manual Add User (10 tests) ---
+  [PASS] 4a. Normal names (John Doe) - Created user john.doe successfully
+  [PASS] 4b. Empty first name - Rejected: "Both first and last name are required."
+  [PASS] 4c. Empty last name - Rejected: "Both first and last name are required."
+  [PASS] 4d. Names with spaces ("Mary Jane") - Rejected: "First name contains invalid characters."
+  [PASS] 4e. Shell metacharacters ("test;whoami") - Rejected: "First name contains invalid characters."
+  [PASS] 4f. Very long names (50+ chars) - Accepted input but rejected at creation: "exceeds 32-character limit."
+  [PASS] 4g. Allowed special chars (O'Brien Smith-Jones) - Created user o'brien.smith-jones successfully
+  [PASS] 4h. Duplicate user (John Doe again) - Shows "User 'john.doe' already exists. Skipping."
+  [PASS] 4i. Declining confirmation (n) - Shows "User creation cancelled."
+  [PASS] 4j. More metacharacters (test|cat, ${HOME}, $(whoami)) - All rejected with "invalid characters"
+
+--- Test 5: View Users (1 test) ---
+  [PASS] 5a. View created users - Shows 44 users (42 scraped + john.doe + o'brien.smith-jones) with timestamps
+
+--- Test 6: Exit (1 test) ---
+  [PASS] 6a. Clean exit via option 4 - Exit code 0, "Thank you" / "Goodbye!" shown
+
+--- Test 7: Edge Cases (4 tests) ---
+  [PASS] 7a. EOF on stdin - Script shows "End of input detected. Exiting." and exits cleanly (no loop)
+  [PASS] 7b. SIGINT (Ctrl+C) - Script exited on SIGINT. Trap verified in source (line 519).
+  [PASS] 7c. Massive input (10000 chars) - Handled gracefully, showed "Invalid option"
+  [PASS] 7d. Null bytes - Script handled null bytes without crashing, exited normally
+
+--------------------------------------------------------------
+SECTION 2: BUG FIX VERIFICATION
+--------------------------------------------------------------
+
+Bug #2/#7 - Scraper output pollution (status messages going to stdout):
+  STATUS: FIXED
+  EVIDENCE: scrape_faculty() sends all status messages to stderr (>&2 redirects
+  on lines 193, 198-199, 215-216). The stdout name list contains exactly 42
+  clean entries with no box-drawing characters, status messages, or garbage.
+
+Bug #3 - Spaces in names producing invalid usernames:
+  STATUS: FIXED
+  EVIDENCE: Input "Mary Jane" as first name is rejected with "First name
+  contains invalid characters. Only letters, hyphens, and apostrophes are
+  allowed." The regex ^[a-zA-Z\'-]+$ on line 431 blocks spaces.
+
+Bug #4 - Long usernames exceeding 32-char limit:
+  STATUS: FIXED
+  EVIDENCE: 50-character first+last names are accepted by input validation
+  (they contain only letters) but create_user() catches the >32 char username
+  at line 309-310 and shows "exceeds 32-character limit." No system user created.
+
+Bug #5 - Shell metacharacters accepted in names:
+  STATUS: FIXED
+  EVIDENCE: "test;whoami", "test|cat", "${HOME}", and "$(whoami)" are all
+  rejected by the regex whitelist ^[a-zA-Z\'-]+$ with "invalid characters"
+  error. Both manual_add_user() (lines 431-438) and create_user() (line 299)
+  enforce this validation.
+
+Bug #6 - EOF causing infinite loop when piping input:
+  STATUS: FIXED
+  EVIDENCE: Piping empty input causes script to print "End of input detected.
+  Exiting." and exit with code 0. The fix is `read -r choice || { ... exit 0; }`
+  on line 525. No timeout needed; script exits immediately.
+
+Bug #8 - No signal trap for clean interrupt:
+  STATUS: FIXED
+  EVIDENCE: Line 519 has: trap 'echo ""; print_info "Interrupted. Exiting.";
+  exit 130' INT TERM. Functional test confirms script exits on SIGINT signal.
+
+--------------------------------------------------------------
+SECTION 3: NEW BUGS DISCOVERED
+--------------------------------------------------------------
+
+No new bugs discovered during regression testing.
+
+Minor observations (not bugs):
+- Bug #4 (long names): The length check happens in create_user() AFTER the
+  confirmation prompt ("Create this user? y/n"). The username and password are
+  displayed to the user before rejection. This is cosmetic only -- the user
+  account is never created. Could be improved by checking length before
+  showing the confirmation, but this is a UX nit, not a bug.
+- The null byte test (7d): Null bytes in input are stripped by bash's read
+  builtin, resulting in an empty string that defaults to option 1 (scrape).
+  This is standard bash behavior and not a vulnerability.
+
+--------------------------------------------------------------
+SECTION 4: TEST SCORE
+--------------------------------------------------------------
+
+Total tests:  35
+Passed:       35
+Failed:        0
+Pass rate:   100%
+
+Previously reported bugs fixed: 6/6 (ALL FIXED)
+New bugs found:                 0
+
+--------------------------------------------------------------
+OVERALL VERDICT: READY TO SHIP
+--------------------------------------------------------------
+All 6 previously reported bugs have been verified as fixed.
+No new regressions or bugs discovered. All input validation,
+license system, scraper, and user management features are
+working correctly. The script handles edge cases (EOF, SIGINT,
+massive input, null bytes, metacharacters) gracefully.
+=============================================================
