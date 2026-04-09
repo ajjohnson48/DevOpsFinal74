@@ -1,0 +1,207 @@
+=============================================================
+TEST 7: EDGE CASE TESTS
+=============================================================
+
+--- Test 7a: EOF on stdin - Bug #6 (should exit cleanly, NOT loop) ---
+(Piping empty input - script should exit after EOF)
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  [i] End of input detected. Exiting.
+
+EXIT CODE: 0
+PASS: Script exited cleanly (no infinite loop)
+
+--- Test 7b: SIGINT handling - Bug #8 ---
+Verifying trap statement exists in script:
+519:    trap 'echo ""; print_info "Interrupted. Exiting."; exit 130' INT TERM
+
+Functional SIGINT test:
+PASS: Script exited on SIGINT
+Script output on SIGINT:
+NOTE: 'Interrupted' message may not appear (trap may not fire when blocked on read from FIFO)
+
+--- Test 7c: Massive input string ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]:   [✗] Invalid option. Please select 1-4.
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]:   [✗] Invalid option. Please select 1-4.
+
+  Press Enter to continue...
+(Output truncated to 50 lines)
+
+--- Test 7d: Null bytes in input ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  ┌──────────────────────────────────────────────────────────┐
+  │            Scraping TNTech CS Faculty & Staff            │
+  └──────────────────────────────────────────────────────────┘
+
+  [i] Downloading faculty page...
+  [i] URL: https://www.tntech.edu/engineering/programs/csc/faculty-and-staff.php
+
+  [✓] Page downloaded successfully.
+  [i] Parsing faculty and staff names...
+
+  ──────────────────────────────────────────────────────────
+  #    First Name           Last Name           
+  ──────────────────────────────────────────────────────────
+  1    Gerald               Gannod              
+  2    Maanak               Gupta               
+  3    William              Eberle              
+  4    Sheikh               Ghafoor             
+  5    Stacy                Prowell             
+  6    Anthony              Skjellum            
+  7    Doug                 Talbert             
+  8    Amr                  Hilal               
+  9    Muhammad             Ismail              
+  10   Michael              Rogers              
+  11   Susmit               Shannigrahi         
+  12   Amani                Altarawneh          
+  13   Prantar              Ghosh               
+  14   MD                   Nine                
+  15   Mir                  Pritom              
+  16   Jesse                Roberts             
+  17   Eric                 Brown               
+  18   Travis               Brummett            
+  19   April                Crockett            
+  20   Benjamin             Burchfield          
+  21   Beata                Kubiak              
+  22   Jacob                Strickler           
+  23   Regis                Billings            
+  24   Cristina             Radian              
+  25   Callie               Stewart             
+  26   Brandon              Vandergriff         
+  27   Barbara              Gannod              
+  28   Dennis               Jump                
+  29   Travis               Lee                 
+  30   Riley                Shipley             
+  31   David                Elizandro           
+  32   Martha               Kosa                
+  33   Ambareen             Siraj               
+  34   Mary                 Daniels             
+  35   Robin                Eberle              
+  36   Danyelle             Hawkins             
+  37   Jennifer             Murphy              
+  38   Amy                  Davis               
+  39   Emily                Disbrow             
+  40   Rebecca              Hahnert             
+  41   Sonya                Haney               
+  42   Corbin               Cawood              
+  ──────────────────────────────────────────────────────────
+  Total: 42 faculty/staff members found.
+
+  Proceed with user account creation? (y/n):   [i] Account creation cancelled.
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  [i] End of input detected. Exiting.
+
+PASS: Script handled null bytes without crashing
+

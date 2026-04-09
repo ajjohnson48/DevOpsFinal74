@@ -1,0 +1,887 @@
+=============================================================
+TEST 4: MANUAL ADD USER TESTS (Option 2)
+=============================================================
+
+--- Test 4a: Normal names (John Doe) ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  ┌──────────────────────────────────────────────────────────┐
+  │               Manual User Account Creation               │
+  └──────────────────────────────────────────────────────────┘
+
+  Enter first name:   Enter last name:  
+  Username: john.doe
+  Password: JohnDoeDEELTECH
+
+  Create this user? (y/n):   [✓] Created user: john.doe  (password set)
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  [i] Thank you for using DeelTech Solutions.
+  Goodbye!
+
+
+--- Test 4b: Empty first name ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  ┌──────────────────────────────────────────────────────────┐
+  │               Manual User Account Creation               │
+  └──────────────────────────────────────────────────────────┘
+
+  Enter first name:   Enter last name:    [✗] Both first and last name are required.
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  [i] Thank you for using DeelTech Solutions.
+  Goodbye!
+
+
+--- Test 4c: Empty last name ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  ┌──────────────────────────────────────────────────────────┐
+  │               Manual User Account Creation               │
+  └──────────────────────────────────────────────────────────┘
+
+  Enter first name:   Enter last name:    [✗] Both first and last name are required.
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  [i] Thank you for using DeelTech Solutions.
+  Goodbye!
+
+
+--- Test 4d: Names with spaces - Bug #3 (Mary Jane Watson) ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  ┌──────────────────────────────────────────────────────────┐
+  │               Manual User Account Creation               │
+  └──────────────────────────────────────────────────────────┘
+
+  Enter first name:   Enter last name:    [✗] First name contains invalid characters. Only letters, hyphens, and apostrophes are allowed.
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  ┌──────────────────────────────────────────────────────────┐
+  │            Scraping TNTech CS Faculty & Staff            │
+  └──────────────────────────────────────────────────────────┘
+
+  [i] Downloading faculty page...
+  [i] URL: https://www.tntech.edu/engineering/programs/csc/faculty-and-staff.php
+
+  [✓] Page downloaded successfully.
+  [i] Parsing faculty and staff names...
+
+  ──────────────────────────────────────────────────────────
+  #    First Name           Last Name           
+  ──────────────────────────────────────────────────────────
+  1    Gerald               Gannod              
+  2    Maanak               Gupta               
+  3    William              Eberle              
+  4    Sheikh               Ghafoor             
+  5    Stacy                Prowell             
+  6    Anthony              Skjellum            
+  7    Doug                 Talbert             
+  8    Amr                  Hilal               
+  9    Muhammad             Ismail              
+  10   Michael              Rogers              
+  11   Susmit               Shannigrahi         
+  12   Amani                Altarawneh          
+  13   Prantar              Ghosh               
+  14   MD                   Nine                
+  15   Mir                  Pritom              
+  16   Jesse                Roberts             
+  17   Eric                 Brown               
+  18   Travis               Brummett            
+  19   April                Crockett            
+  20   Benjamin             Burchfield          
+  21   Beata                Kubiak              
+  22   Jacob                Strickler           
+  23   Regis                Billings            
+  24   Cristina             Radian              
+  25   Callie               Stewart             
+  26   Brandon              Vandergriff         
+  27   Barbara              Gannod              
+  28   Dennis               Jump                
+  29   Travis               Lee                 
+  30   Riley                Shipley             
+  31   David                Elizandro           
+  32   Martha               Kosa                
+  33   Ambareen             Siraj               
+  34   Mary                 Daniels             
+  35   Robin                Eberle              
+  36   Danyelle             Hawkins             
+  37   Jennifer             Murphy              
+  38   Amy                  Davis               
+  39   Emily                Disbrow             
+  40   Rebecca              Hahnert             
+  41   Sonya                Haney               
+  42   Corbin               Cawood              
+  ──────────────────────────────────────────────────────────
+  Total: 42 faculty/staff members found.
+
+  Proceed with user account creation? (y/n):   [i] Account creation cancelled.
+
+  Press Enter to continue...
+--- Test 4e: Shell metacharacters - Bug #5 (test;whoami) ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  ┌──────────────────────────────────────────────────────────┐
+  │               Manual User Account Creation               │
+  └──────────────────────────────────────────────────────────┘
+
+  Enter first name:   Enter last name:    [✗] First name contains invalid characters. Only letters, hyphens, and apostrophes are allowed.
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  ┌──────────────────────────────────────────────────────────┐
+  │            Scraping TNTech CS Faculty & Staff            │
+  └──────────────────────────────────────────────────────────┘
+
+  [i] Downloading faculty page...
+  [i] URL: https://www.tntech.edu/engineering/programs/csc/faculty-and-staff.php
+
+  [✓] Page downloaded successfully.
+  [i] Parsing faculty and staff names...
+
+  ──────────────────────────────────────────────────────────
+  #    First Name           Last Name           
+  ──────────────────────────────────────────────────────────
+  1    Gerald               Gannod              
+  2    Maanak               Gupta               
+  3    William              Eberle              
+  4    Sheikh               Ghafoor             
+  5    Stacy                Prowell             
+  6    Anthony              Skjellum            
+  7    Doug                 Talbert             
+  8    Amr                  Hilal               
+  9    Muhammad             Ismail              
+  10   Michael              Rogers              
+  11   Susmit               Shannigrahi         
+  12   Amani                Altarawneh          
+  13   Prantar              Ghosh               
+  14   MD                   Nine                
+  15   Mir                  Pritom              
+  16   Jesse                Roberts             
+  17   Eric                 Brown               
+  18   Travis               Brummett            
+  19   April                Crockett            
+  20   Benjamin             Burchfield          
+  21   Beata                Kubiak              
+  22   Jacob                Strickler           
+  23   Regis                Billings            
+  24   Cristina             Radian              
+  25   Callie               Stewart             
+  26   Brandon              Vandergriff         
+  27   Barbara              Gannod              
+  28   Dennis               Jump                
+  29   Travis               Lee                 
+  30   Riley                Shipley             
+  31   David                Elizandro           
+  32   Martha               Kosa                
+  33   Ambareen             Siraj               
+  34   Mary                 Daniels             
+  35   Robin                Eberle              
+  36   Danyelle             Hawkins             
+  37   Jennifer             Murphy              
+  38   Amy                  Davis               
+  39   Emily                Disbrow             
+  40   Rebecca              Hahnert             
+  41   Sonya                Haney               
+  42   Corbin               Cawood              
+  ──────────────────────────────────────────────────────────
+  Total: 42 faculty/staff members found.
+
+  Proceed with user account creation? (y/n):   [i] Account creation cancelled.
+
+  Press Enter to continue...
+--- Test 4f: Very long names - Bug #4 (50+ chars) ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  ┌──────────────────────────────────────────────────────────┐
+  │               Manual User Account Creation               │
+  └──────────────────────────────────────────────────────────┘
+
+  Enter first name:   Enter last name:  
+  Username: abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx.abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx
+  Password: AbcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxAbcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxDEELTECH
+
+  Create this user? (y/n):   [✗] Generated username 'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx.abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx' exceeds 32-character limit.
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  [i] Thank you for using DeelTech Solutions.
+  Goodbye!
+
+
+--- Test 4g: Allowed special chars (O'Brien Smith-Jones) ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  ┌──────────────────────────────────────────────────────────┐
+  │               Manual User Account Creation               │
+  └──────────────────────────────────────────────────────────┘
+
+  Enter first name:   Enter last name:  
+  Username: o'brien.smith-jones
+  Password: O'BrienSmith-JonesDEELTECH
+
+  Create this user? (y/n):   [✓] Created user: o'brien.smith-jones  (password set)
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  [i] Thank you for using DeelTech Solutions.
+  Goodbye!
+
+
+--- Test 4h: Duplicate user (John Doe again) ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  ┌──────────────────────────────────────────────────────────┐
+  │               Manual User Account Creation               │
+  └──────────────────────────────────────────────────────────┘
+
+  Enter first name:   Enter last name:  
+  Username: john.doe
+  Password: JohnDoeDEELTECH
+
+  Create this user? (y/n):   [!] User 'john.doe' already exists. Skipping.
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  [i] Thank you for using DeelTech Solutions.
+  Goodbye!
+
+
+--- Test 4i: Declining confirmation ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  ┌──────────────────────────────────────────────────────────┐
+  │               Manual User Account Creation               │
+  └──────────────────────────────────────────────────────────┘
+
+  Enter first name:   Enter last name:  
+  Username: alice.wonder
+  Password: AliceWonderDEELTECH
+
+  Create this user? (y/n):   [i] User creation cancelled.
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  [i] Thank you for using DeelTech Solutions.
+  Goodbye!
+
+
+--- Test 4j: More metacharacters (`test`, test|cat, $HOME) ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  ┌──────────────────────────────────────────────────────────┐
+  │               Manual User Account Creation               │
+  └──────────────────────────────────────────────────────────┘
+
+  Enter first name:   Enter last name:    [✗] First name contains invalid characters. Only letters, hyphens, and apostrophes are allowed.
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  ┌──────────────────────────────────────────────────────────┐
+  │            Scraping TNTech CS Faculty & Staff            │
+  └──────────────────────────────────────────────────────────┘
+
+  [i] Downloading faculty page...
+  [i] URL: https://www.tntech.edu/engineering/programs/csc/faculty-and-staff.php
+
+  [✓] Page downloaded successfully.
+  [i] Parsing faculty and staff names...
+
+  ──────────────────────────────────────────────────────────
+  #    First Name           Last Name           
+  ──────────────────────────────────────────────────────────
+  1    Gerald               Gannod              
+  2    Maanak               Gupta               
+  3    William              Eberle              
+  4    Sheikh               Ghafoor             
+  5    Stacy                Prowell             
+  6    Anthony              Skjellum            
+  7    Doug                 Talbert             
+  8    Amr                  Hilal               
+  9    Muhammad             Ismail              
+  10   Michael              Rogers              
+  11   Susmit               Shannigrahi         
+  12   Amani                Altarawneh          
+  13   Prantar              Ghosh               
+  14   MD                   Nine                
+  15   Mir                  Pritom              
+  16   Jesse                Roberts             
+  17   Eric                 Brown               
+  18   Travis               Brummett            
+  19   April                Crockett            
+  20   Benjamin             Burchfield          
+  21   Beata                Kubiak              
+  22   Jacob                Strickler           
+  23   Regis                Billings            
+  24   Cristina             Radian              
+  25   Callie               Stewart             
+  26   Brandon              Vandergriff         
+  27   Barbara              Gannod              
+  28   Dennis               Jump                
+  29   Travis               Lee                 
+  30   Riley                Shipley             
+  31   David                Elizandro           
+  32   Martha               Kosa                
+  33   Ambareen             Siraj               
+  34   Mary                 Daniels             
+  35   Robin                Eberle              
+  36   Danyelle             Hawkins             
+  37   Jennifer             Murphy              
+  38   Amy                  Davis               
+  39   Emily                Disbrow             
+  40   Rebecca              Hahnert             
+  41   Sonya                Haney               
+  42   Corbin               Cawood              
+  ──────────────────────────────────────────────────────────
+  Total: 42 faculty/staff members found.
+
+  Proceed with user account creation? (y/n):   [i] Account creation cancelled.
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]:   [✗] Invalid option. Please select 1-4.
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  ┌──────────────────────────────────────────────────────────┐
+  │            Scraping TNTech CS Faculty & Staff            │
+  └──────────────────────────────────────────────────────────┘
+
+  [i] Downloading faculty page...
+  [i] URL: https://www.tntech.edu/engineering/programs/csc/faculty-and-staff.php
+
+  [✓] Page downloaded successfully.
+  [i] Parsing faculty and staff names...
+
+  ──────────────────────────────────────────────────────────
+  #    First Name           Last Name           
+  ──────────────────────────────────────────────────────────
+  1    Gerald               Gannod              
+  2    Maanak               Gupta               
+  3    William              Eberle              
+  4    Sheikh               Ghafoor             
+  5    Stacy                Prowell             
+  6    Anthony              Skjellum            
+  7    Doug                 Talbert             
+  8    Amr                  Hilal               
+  9    Muhammad             Ismail              
+  10   Michael              Rogers              
+  11   Susmit               Shannigrahi         
+  12   Amani                Altarawneh          
+  13   Prantar              Ghosh               
+  14   MD                   Nine                
+  15   Mir                  Pritom              
+  16   Jesse                Roberts             
+  17   Eric                 Brown               
+  18   Travis               Brummett            
+  19   April                Crockett            
+  20   Benjamin             Burchfield          
+  21   Beata                Kubiak              
+  22   Jacob                Strickler           
+  23   Regis                Billings            
+  24   Cristina             Radian              
+  25   Callie               Stewart             
+  26   Brandon              Vandergriff         
+  27   Barbara              Gannod              
+  28   Dennis               Jump                
+  29   Travis               Lee                 
+  30   Riley                Shipley             
+  31   David                Elizandro           
+  32   Martha               Kosa                
+  33   Ambareen             Siraj               
+  34   Mary                 Daniels             
+  35   Robin                Eberle              
+  36   Danyelle             Hawkins             
+  37   Jennifer             Murphy              
+  38   Amy                  Davis               
+  39   Emily                Disbrow             
+  40   Rebecca              Hahnert             
+  41   Sonya                Haney               
+  42   Corbin               Cawood              
+  ──────────────────────────────────────────────────────────
+  Total: 42 faculty/staff members found.
+
+  Proceed with user account creation? (y/n):   [i] Account creation cancelled.
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]:   [✗] Invalid option. Please select 1-4.
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  ┌──────────────────────────────────────────────────────────┐
+  │            Scraping TNTech CS Faculty & Staff            │
+  └──────────────────────────────────────────────────────────┘
+
+  [i] Downloading faculty page...
+  [i] URL: https://www.tntech.edu/engineering/programs/csc/faculty-and-staff.php
+
+  [✓] Page downloaded successfully.
+  [i] Parsing faculty and staff names...
+
+  ──────────────────────────────────────────────────────────
+  #    First Name           Last Name           
+  ──────────────────────────────────────────────────────────
+  1    Gerald               Gannod              
+  2    Maanak               Gupta               
+  3    William              Eberle              
+  4    Sheikh               Ghafoor             
+  5    Stacy                Prowell             
+  6    Anthony              Skjellum            
+  7    Doug                 Talbert             
+  8    Amr                  Hilal               
+  9    Muhammad             Ismail              
+  10   Michael              Rogers              
+  11   Susmit               Shannigrahi         
+  12   Amani                Altarawneh          
+  13   Prantar              Ghosh               
+  14   MD                   Nine                
+  15   Mir                  Pritom              
+  16   Jesse                Roberts             
+  17   Eric                 Brown               
+  18   Travis               Brummett            
+  19   April                Crockett            
+  20   Benjamin             Burchfield          
+  21   Beata                Kubiak              
+  22   Jacob                Strickler           
+  23   Regis                Billings            
+  24   Cristina             Radian              
+  25   Callie               Stewart             
+  26   Brandon              Vandergriff         
+  27   Barbara              Gannod              
+  28   Dennis               Jump                
+  29   Travis               Lee                 
+  30   Riley                Shipley             
+  31   David                Elizandro           
+  32   Martha               Kosa                
+  33   Ambareen             Siraj               
+  34   Mary                 Daniels             
+  35   Robin                Eberle              
+  36   Danyelle             Hawkins             
+  37   Jennifer             Murphy              
+  38   Amy                  Davis               
+  39   Emily                Disbrow             
+  40   Rebecca              Hahnert             
+  41   Sonya                Haney               
+  42   Corbin               Cawood              
+  ──────────────────────────────────────────────────────────
+  Total: 42 faculty/staff members found.
+
+  Proceed with user account creation? (y/n):   [i] Account creation cancelled.
+
+  Press Enter to continue...

@@ -1,0 +1,381 @@
+=============================================================
+TEST 3: WEB SCRAPER TESTS (Option 1)
+=============================================================
+
+--- Test 3a: Full scrape and create users ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  ┌──────────────────────────────────────────────────────────┐
+  │            Scraping TNTech CS Faculty & Staff            │
+  └──────────────────────────────────────────────────────────┘
+
+  [i] Downloading faculty page...
+  [i] URL: https://www.tntech.edu/engineering/programs/csc/faculty-and-staff.php
+
+  [✓] Page downloaded successfully.
+  [i] Parsing faculty and staff names...
+
+  ──────────────────────────────────────────────────────────
+  #    First Name           Last Name           
+  ──────────────────────────────────────────────────────────
+  1    Gerald               Gannod              
+  2    Maanak               Gupta               
+  3    William              Eberle              
+  4    Sheikh               Ghafoor             
+  5    Stacy                Prowell             
+  6    Anthony              Skjellum            
+  7    Doug                 Talbert             
+  8    Amr                  Hilal               
+  9    Muhammad             Ismail              
+  10   Michael              Rogers              
+  11   Susmit               Shannigrahi         
+  12   Amani                Altarawneh          
+  13   Prantar              Ghosh               
+  14   MD                   Nine                
+  15   Mir                  Pritom              
+  16   Jesse                Roberts             
+  17   Eric                 Brown               
+  18   Travis               Brummett            
+  19   April                Crockett            
+  20   Benjamin             Burchfield          
+  21   Beata                Kubiak              
+  22   Jacob                Strickler           
+  23   Regis                Billings            
+  24   Cristina             Radian              
+  25   Callie               Stewart             
+  26   Brandon              Vandergriff         
+  27   Barbara              Gannod              
+  28   Dennis               Jump                
+  29   Travis               Lee                 
+  30   Riley                Shipley             
+  31   David                Elizandro           
+  32   Martha               Kosa                
+  33   Ambareen             Siraj               
+  34   Mary                 Daniels             
+  35   Robin                Eberle              
+  36   Danyelle             Hawkins             
+  37   Jennifer             Murphy              
+  38   Amy                  Davis               
+  39   Emily                Disbrow             
+  40   Rebecca              Hahnert             
+  41   Sonya                Haney               
+  42   Corbin               Cawood              
+  ──────────────────────────────────────────────────────────
+  Total: 42 faculty/staff members found.
+
+  Proceed with user account creation? (y/n): 
+  ┌──────────────────────────────────────────────────────────┐
+  │                  Creating User Accounts                  │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Created user: gerald.gannod  (password set)
+  [✓] Created user: maanak.gupta  (password set)
+  [✓] Created user: william.eberle  (password set)
+  [✓] Created user: sheikh.ghafoor  (password set)
+  [✓] Created user: stacy.prowell  (password set)
+  [✓] Created user: anthony.skjellum  (password set)
+  [✓] Created user: doug.talbert  (password set)
+  [✓] Created user: amr.hilal  (password set)
+  [✓] Created user: muhammad.ismail  (password set)
+  [✓] Created user: michael.rogers  (password set)
+  [✓] Created user: susmit.shannigrahi  (password set)
+  [✓] Created user: amani.altarawneh  (password set)
+  [✓] Created user: prantar.ghosh  (password set)
+  [✓] Created user: md.nine  (password set)
+  [✓] Created user: mir.pritom  (password set)
+  [✓] Created user: jesse.roberts  (password set)
+  [✓] Created user: eric.brown  (password set)
+  [✓] Created user: travis.brummett  (password set)
+  [✓] Created user: april.crockett  (password set)
+  [✓] Created user: benjamin.burchfield  (password set)
+  [✓] Created user: beata.kubiak  (password set)
+  [✓] Created user: jacob.strickler  (password set)
+  [✓] Created user: regis.billings  (password set)
+  [✓] Created user: cristina.radian  (password set)
+  [✓] Created user: callie.stewart  (password set)
+  [✓] Created user: brandon.vandergriff  (password set)
+  [✓] Created user: barbara.gannod  (password set)
+  [✓] Created user: dennis.jump  (password set)
+  [✓] Created user: travis.lee  (password set)
+  [✓] Created user: riley.shipley  (password set)
+  [✓] Created user: david.elizandro  (password set)
+  [✓] Created user: martha.kosa  (password set)
+  [✓] Created user: ambareen.siraj  (password set)
+  [✓] Created user: mary.daniels  (password set)
+  [✓] Created user: robin.eberle  (password set)
+  [✓] Created user: danyelle.hawkins  (password set)
+  [✓] Created user: jennifer.murphy  (password set)
+  [✓] Created user: amy.davis  (password set)
+  [✓] Created user: emily.disbrow  (password set)
+  [✓] Created user: rebecca.hahnert  (password set)
+  [✓] Created user: sonya.haney  (password set)
+  [✓] Created user: corbin.cawood  (password set)
+
+  ──────────────────────────────────────────────────────────
+  Account Creation Summary
+  ──────────────────────────────────────────────────────────
+  Total processed:  42
+  Created:          42
+  Skipped (exist):  0
+  Failed:           0
+  ──────────────────────────────────────────────────────────
+
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  [i] Thank you for using DeelTech Solutions.
+  Goodbye!
+
+
+--- Test 3b: Name count verification ---
+Running scrape_faculty() directly to count names and check for garbage:
+Total names scraped: 42
+
+Full name list:
+     1	Gerald Gannod
+     2	Maanak Gupta
+     3	William Eberle
+     4	Sheikh Ghafoor
+     5	Stacy Prowell
+     6	Anthony Skjellum
+     7	Doug Talbert
+     8	Amr Hilal
+     9	Muhammad Ismail
+    10	Michael Rogers
+    11	Susmit Shannigrahi
+    12	Amani Altarawneh
+    13	Prantar Ghosh
+    14	MD S Zulkar Nine
+    15	Mir Pritom
+    16	Jesse Roberts
+    17	Eric Brown
+    18	Travis Brummett
+    19	April Crockett
+    20	Benjamin Burchfield
+    21	Beata Kubiak
+    22	Jacob Strickler
+    23	Regis Billings
+    24	Cristina Radian
+    25	Callie Stewart
+    26	Brandon Vandergriff
+    27	Barbara Gannod
+    28	Dennis Jump
+    29	Travis Lee
+    30	Riley Shipley
+    31	David Elizandro
+    32	Martha Kosa
+    33	Ambareen Siraj
+    34	Mary Daniels
+    35	Robin Eberle
+    36	Danyelle Hawkins
+    37	Jennifer Murphy
+    38	Amy Davis
+    39	Emily Disbrow
+    40	Rebecca Hahnert
+    41	Sonya Haney
+    42	Corbin Cawood
+
+--- Test 3c: Check for garbage/status messages in name list ---
+PASS: No garbage or status messages found in name list
+
+--- Test 3d: Second scrape (skip existing users) ---
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Valid license detected. Access granted.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  ┌──────────────────────────────────────────────────────────┐
+  │            Scraping TNTech CS Faculty & Staff            │
+  └──────────────────────────────────────────────────────────┘
+
+  [i] Downloading faculty page...
+  [i] URL: https://www.tntech.edu/engineering/programs/csc/faculty-and-staff.php
+
+  [✓] Page downloaded successfully.
+  [i] Parsing faculty and staff names...
+
+  ──────────────────────────────────────────────────────────
+  #    First Name           Last Name           
+  ──────────────────────────────────────────────────────────
+  1    Gerald               Gannod              
+  2    Maanak               Gupta               
+  3    William              Eberle              
+  4    Sheikh               Ghafoor             
+  5    Stacy                Prowell             
+  6    Anthony              Skjellum            
+  7    Doug                 Talbert             
+  8    Amr                  Hilal               
+  9    Muhammad             Ismail              
+  10   Michael              Rogers              
+  11   Susmit               Shannigrahi         
+  12   Amani                Altarawneh          
+  13   Prantar              Ghosh               
+  14   MD                   Nine                
+  15   Mir                  Pritom              
+  16   Jesse                Roberts             
+  17   Eric                 Brown               
+  18   Travis               Brummett            
+  19   April                Crockett            
+  20   Benjamin             Burchfield          
+  21   Beata                Kubiak              
+  22   Jacob                Strickler           
+  23   Regis                Billings            
+  24   Cristina             Radian              
+  25   Callie               Stewart             
+  26   Brandon              Vandergriff         
+  27   Barbara              Gannod              
+  28   Dennis               Jump                
+  29   Travis               Lee                 
+  30   Riley                Shipley             
+  31   David                Elizandro           
+  32   Martha               Kosa                
+  33   Ambareen             Siraj               
+  34   Mary                 Daniels             
+  35   Robin                Eberle              
+  36   Danyelle             Hawkins             
+  37   Jennifer             Murphy              
+  38   Amy                  Davis               
+  39   Emily                Disbrow             
+  40   Rebecca              Hahnert             
+  41   Sonya                Haney               
+  42   Corbin               Cawood              
+  ──────────────────────────────────────────────────────────
+  Total: 42 faculty/staff members found.
+
+  Proceed with user account creation? (y/n): 
+  ┌──────────────────────────────────────────────────────────┐
+  │                  Creating User Accounts                  │
+  └──────────────────────────────────────────────────────────┘
+
+  [!] User 'gerald.gannod' already exists. Skipping.
+  [!] User 'maanak.gupta' already exists. Skipping.
+  [!] User 'william.eberle' already exists. Skipping.
+  [!] User 'sheikh.ghafoor' already exists. Skipping.
+  [!] User 'stacy.prowell' already exists. Skipping.
+  [!] User 'anthony.skjellum' already exists. Skipping.
+  [!] User 'doug.talbert' already exists. Skipping.
+  [!] User 'amr.hilal' already exists. Skipping.
+  [!] User 'muhammad.ismail' already exists. Skipping.
+  [!] User 'michael.rogers' already exists. Skipping.
+  [!] User 'susmit.shannigrahi' already exists. Skipping.
+  [!] User 'amani.altarawneh' already exists. Skipping.
+  [!] User 'prantar.ghosh' already exists. Skipping.
+  [!] User 'md.nine' already exists. Skipping.
+  [!] User 'mir.pritom' already exists. Skipping.
+  [!] User 'jesse.roberts' already exists. Skipping.
+  [!] User 'eric.brown' already exists. Skipping.
+  [!] User 'travis.brummett' already exists. Skipping.
+  [!] User 'april.crockett' already exists. Skipping.
+  [!] User 'benjamin.burchfield' already exists. Skipping.
+  [!] User 'beata.kubiak' already exists. Skipping.
+  [!] User 'jacob.strickler' already exists. Skipping.
+  [!] User 'regis.billings' already exists. Skipping.
+  [!] User 'cristina.radian' already exists. Skipping.
+  [!] User 'callie.stewart' already exists. Skipping.
+  [!] User 'brandon.vandergriff' already exists. Skipping.
+  [!] User 'barbara.gannod' already exists. Skipping.
+  [!] User 'dennis.jump' already exists. Skipping.
+  [!] User 'travis.lee' already exists. Skipping.
+  [!] User 'riley.shipley' already exists. Skipping.
+  [!] User 'david.elizandro' already exists. Skipping.
+  [!] User 'martha.kosa' already exists. Skipping.
+  [!] User 'ambareen.siraj' already exists. Skipping.
+  [!] User 'mary.daniels' already exists. Skipping.
+  [!] User 'robin.eberle' already exists. Skipping.
+  [!] User 'danyelle.hawkins' already exists. Skipping.
+  [!] User 'jennifer.murphy' already exists. Skipping.
+  [!] User 'amy.davis' already exists. Skipping.
+  [!] User 'emily.disbrow' already exists. Skipping.
+  [!] User 'rebecca.hahnert' already exists. Skipping.
+  [!] User 'sonya.haney' already exists. Skipping.
+  [!] User 'corbin.cawood' already exists. Skipping.
+
+  ──────────────────────────────────────────────────────────
+  Account Creation Summary
+  ──────────────────────────────────────────────────────────
+  Total processed:  42
+  Created:          0
+  Skipped (exist):  42
+  Failed:           0
+  ──────────────────────────────────────────────────────────
+
+
+  Press Enter to continue...
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 
+  [i] Thank you for using DeelTech Solutions.
+  Goodbye!
+
+
