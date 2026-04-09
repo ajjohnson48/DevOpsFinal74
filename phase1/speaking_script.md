@@ -2,11 +2,11 @@
 
 **Total Time Target: 8 minutes (7:30 - 8:30 for full credit)**
 
-Each section is approximately 2 minutes. Speakers are labeled as **Speaker 1** through **Speaker 4** — replace with your actual names.
+Each section is approximately 2 minutes.
 
 ---
 
-## SPEAKER 1 — Slides 1, 2, 3 (~2 minutes)
+## BESHOY FARAG (Project Manager) — Slides 1, 2, 3 (~2 minutes)
 
 ### Slide 1 — Title Slide
 
@@ -22,7 +22,7 @@ Each section is approximately 2 minutes. Speakers are labeled as **Speaker 1** t
 
 ---
 
-## SPEAKER 2 — Slides 4, 5, 6 (~2 minutes)
+## CANAAN JACKSON (Lead Developer) — Slides 4, 5, 6 (~2 minutes)
 
 ### Slide 4 — Scope of Work
 
@@ -30,7 +30,7 @@ Each section is approximately 2 minutes. Speakers are labeled as **Speaker 1** t
 
 ### Slide 5 — Team Roles
 
-> For team organization, we have divided responsibilities into four roles. Our Project Manager and Scrum Master handles sprint planning, stakeholder communication, and risk tracking. Our Lead Developer owns the core script architecture, the web scraping implementation, and code quality reviews. Our DevOps Engineer is responsible for the CI/CD pipeline, VM environment setup, and deployment automation. And our QA and Documentation Lead handles testing, the user manual, and presentation preparation. Each of us will be contributing code, but these roles define who owns each area of the project.
+> For team organization, we have divided responsibilities into four roles. Beshoy Farag is our Project Manager, handling sprint planning, stakeholder communication, and risk tracking. Canaan Jackson is our Lead Developer, owning the core script architecture, the web scraping implementation, and code quality reviews. Koby Zhang is our DevOps Engineer, responsible for the CI/CD pipeline, VM environment setup, and deployment automation. And Anthony Johnson is our QA and Documentation Lead, handling testing, the user manual, and presentation preparation. Each of us will be contributing code, but these roles define who owns each area of the project.
 
 ### Slide 6 — Development Approach
 
@@ -38,7 +38,7 @@ Each section is approximately 2 minutes. Speakers are labeled as **Speaker 1** t
 
 ---
 
-## SPEAKER 3 — Slides 7, 8, 9 (~2 minutes)
+## KOBY ZHANG (DevOps Engineer) — Slides 7, 8, 9 (~2 minutes)
 
 ### Slide 7 — Recommended Improvements
 
@@ -54,7 +54,7 @@ Each section is approximately 2 minutes. Speakers are labeled as **Speaker 1** t
 
 ---
 
-## SPEAKER 4 — Slides 10, 11, 12 (~2 minutes)
+## ANTHONY JOHNSON (QA / Documentation Lead) — Slides 10, 11, 12 (~2 minutes)
 
 ### Slide 10 — CI/CD Strategy
 
@@ -74,10 +74,10 @@ Each section is approximately 2 minutes. Speakers are labeled as **Speaker 1** t
 
 | Speaker | Slides | Approx. Time |
 |---------|--------|---------------|
-| Speaker 1 | 1, 2, 3 (Title, Agenda, Problem) | ~2:00 |
-| Speaker 2 | 4, 5, 6 (Scope, Roles, Dev Approach) | ~2:00 |
-| Speaker 3 | 7, 8, 9 (Improvements, Collab, Timeline) | ~2:00 |
-| Speaker 4 | 10, 11, 12 (CI/CD, Conclusion, Questions) | ~2:00 |
+| Beshoy Farag | 1, 2, 3 (Title, Agenda, Problem) | ~2:00 |
+| Canaan Jackson | 4, 5, 6 (Scope, Roles, Dev Approach) | ~2:00 |
+| Koby Zhang | 7, 8, 9 (Improvements, Collab, Timeline) | ~2:00 |
+| Anthony Johnson | 10, 11, 12 (CI/CD, Conclusion, Questions) | ~2:00 |
 | **Total** | **12 slides** | **~8:00** |
 
 **Tips:**

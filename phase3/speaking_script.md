@@ -2,11 +2,11 @@
 
 **Total Time Target: ~4:30 (safely above the 4-minute minimum)**
 
-Each section is approximately 1:00 to 1:15 minutes. Speakers are labeled as **Speaker 1** through **Speaker 4** — replace with your actual names.
+Each section is approximately 1:00 to 1:15 minutes.
 
 ---
 
-## SPEAKER 1 — Slides 1, 2, 3 (~1:10)
+## BESHOY FARAG (Project Manager) — Slides 1, 2, 3 (~1:10)
 
 ### Slide 1 — Title Slide
 
@@ -22,7 +22,7 @@ Each section is approximately 1:00 to 1:15 minutes. Speakers are labeled as **Sp
 
 ---
 
-## SPEAKER 2 — Slides 4, 5 (~1:10)
+## CANAAN JACKSON (Lead Developer) — Slides 4, 5 (~1:10)
 
 ### Slide 4 — Our Pipeline
 
@@ -34,7 +34,7 @@ Each section is approximately 1:00 to 1:15 minutes. Speakers are labeled as **Sp
 
 ---
 
-## SPEAKER 3 — Slides 6, 7 (~1:10)
+## KOBY ZHANG (DevOps Engineer) — Slides 6, 7 (~1:10)
 
 ### Slide 6 — CI/CD Results and Experience
 
@@ -46,7 +46,7 @@ Each section is approximately 1:00 to 1:15 minutes. Speakers are labeled as **Sp
 
 ---
 
-## SPEAKER 4 — Slides 8, 9, 10 (~1:00)
+## ANTHONY JOHNSON (QA / Documentation Lead) — Slides 8, 9, 10 (~1:00)
 
 ### Slide 8 — Process Improvements
 
@@ -66,10 +66,10 @@ Each section is approximately 1:00 to 1:15 minutes. Speakers are labeled as **Sp
 
 | Speaker | Slides | Approx. Time |
 |---------|--------|---------------|
-| Speaker 1 | 1, 2, 3 (Title, Agenda, CI/CD Overview) | ~1:10 |
-| Speaker 2 | 4, 5 (Pipeline, CI/CD in Action) | ~1:10 |
-| Speaker 3 | 6, 7 (Results, Lessons Learned) | ~1:10 |
-| Speaker 4 | 8, 9, 10 (Improvements, Conclusion, Questions) | ~1:00 |
+| Beshoy Farag | 1, 2, 3 (Title, Agenda, CI/CD Overview) | ~1:10 |
+| Canaan Jackson | 4, 5 (Pipeline, CI/CD in Action) | ~1:10 |
+| Koby Zhang | 6, 7 (Results, Lessons Learned) | ~1:10 |
+| Anthony Johnson | 8, 9, 10 (Improvements, Conclusion, Questions) | ~1:00 |
 | **Total** | **10 slides** | **~4:30** |
 
 **Tips:**
