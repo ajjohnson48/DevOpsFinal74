@@ -1,0 +1,172 @@
+#===================================================================
+#  DeelTech Solutions - CI/CD Pipeline
+#===================================================================
+#  Continuous integration workflow for the Faculty Account
+#  Automation System. Runs linting, syntax checks, and
+#  validation on every push and pull request.
+#
+#  Course : CSC2510 - DevOps Final Project (Spring 2026)
+#===================================================================
+
+name: DeelTech CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # ─────────────────────────────────────────────────────────────
+  # Stage 1: Lint — Static analysis with ShellCheck
+  # ─────────────────────────────────────────────────────────────
+  lint:
+    name: ShellCheck Lint
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install ShellCheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+
+      - name: Run ShellCheck on all shell scripts
+        run: |
+          echo "=== Running ShellCheck ==="
+          find . -name "*.sh" -type f | while read -r script; do
+            echo "Checking: $script"
+            shellcheck -s bash -S warning "$script"
+          done
+          echo "=== ShellCheck complete ==="
+
+  # ─────────────────────────────────────────────────────────────
+  # Stage 2: Test — Syntax validation and structure checks
+  # ─────────────────────────────────────────────────────────────
+  test:
+    name: Script Validation
+    runs-on: ubuntu-24.04
+    needs: lint
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check BASH syntax (bash -n)
+        run: |
+          echo "=== Syntax Validation ==="
+          find . -name "*.sh" -type f | while read -r script; do
+            echo "Validating syntax: $script"
+            bash -n "$script"
+            echo "  [PASS] $script"
+          done
+          echo "=== Syntax validation complete ==="
+
+      - name: Verify script is executable
+        run: |
+          echo "=== Permission Checks ==="
+          MAIN_SCRIPT="scripts/main.sh"
+          if [ -f "$MAIN_SCRIPT" ]; then
+            if [ -x "$MAIN_SCRIPT" ]; then
+              echo "  [PASS] $MAIN_SCRIPT is executable"
+            else
+              echo "  [FAIL] $MAIN_SCRIPT is not executable"
+              echo "  Fix with: chmod +x $MAIN_SCRIPT"
+              exit 1
+            fi
+          else
+            echo "  [WARN] $MAIN_SCRIPT not found — skipping permission check"
+          fi
+          echo "=== Permission checks complete ==="
+
+      - name: Verify required functions exist
+        run: |
+          echo "=== Function Verification ==="
+          MAIN_SCRIPT="scripts/main.sh"
+          REQUIRED_FUNCTIONS=(
+            "check_license"
+            "scrape_faculty"
+            "create_user"
+            "batch_create_users"
+            "manual_add_user"
+            "main"
+          )
+          MISSING=0
+          for func in "${REQUIRED_FUNCTIONS[@]}"; do
+            if grep -qE "^${func}\(\)|^${func} \(\)" "$MAIN_SCRIPT"; then
+              echo "  [PASS] Found function: $func"
+            else
+              echo "  [FAIL] Missing function: $func"
+              MISSING=$((MISSING + 1))
+            fi
+          done
+          if [ "$MISSING" -gt 0 ]; then
+            echo "  $MISSING required function(s) missing!"
+            exit 1
+          fi
+          echo "=== Function verification complete ==="
+
+      - name: Check for required configuration variables
+        run: |
+          echo "=== Configuration Checks ==="
+          MAIN_SCRIPT="scripts/main.sh"
+          REQUIRED_VARS=(
+            "FACULTY_URL"
+            "LICENSE_DIR"
+            "LICENSE_FILE"
+            "PASSWORD_SUFFIX"
+            "CREATED_USERS_LOG"
+          )
+          for var in "${REQUIRED_VARS[@]}"; do
+            if grep -q "$var" "$MAIN_SCRIPT"; then
+              echo "  [PASS] Found variable: $var"
+            else
+              echo "  [WARN] Variable not found: $var"
+            fi
+          done
+          echo "=== Configuration checks complete ==="
+
+  # ─────────────────────────────────────────────────────────────
+  # Stage 3: Deploy — Deployment to target VM
+  # ─────────────────────────────────────────────────────────────
+  # This job is configured for manual trigger only.
+  # In production, it would SSH into the target Ubuntu VM
+  # and deploy the updated script automatically.
+  #
+  # To enable automated deployment:
+  #   1. Add SSH_HOST, SSH_USER, and SSH_KEY as repository secrets
+  #   2. Uncomment the deploy job below
+  #   3. Adjust the target path as needed
+  # ─────────────────────────────────────────────────────────────
+  # deploy:
+  #   name: Deploy to Target VM
+  #   runs-on: ubuntu-24.04
+  #   needs: test
+  #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+  #
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v4
+  #
+  #     - name: Deploy via SSH
+  #       uses: appleboy/ssh-action@v1.0.3
+  #       with:
+  #         host: ${{ secrets.SSH_HOST }}
+  #         username: ${{ secrets.SSH_USER }}
+  #         key: ${{ secrets.SSH_KEY }}
+  #         script: |
+  #           echo "=== Deploying DeelTech Faculty Automation ==="
+  #           cd /opt/deeltech
+  #           git pull origin main
+  #           chmod +x scripts/main.sh
+  #           echo "=== Deployment complete ==="
+  #
+  #     - name: Verify deployment
+  #       uses: appleboy/ssh-action@v1.0.3
+  #       with:
+  #         host: ${{ secrets.SSH_HOST }}
+  #         username: ${{ secrets.SSH_USER }}
+  #         key: ${{ secrets.SSH_KEY }}
+  #         script: |
+  #           bash -n /opt/deeltech/scripts/main.sh
+  #           echo "[PASS] Deployed script passes syntax check"
