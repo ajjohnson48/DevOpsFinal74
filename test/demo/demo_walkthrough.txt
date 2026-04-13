@@ -1,0 +1,293 @@
+=============================================================
+DEELTECH SOLUTIONS - APPLICATION DEMO WALKTHROUGH
+=============================================================
+Date: 2026-04-12
+Script: /scripts/main.sh
+Environment: Ubuntu 24.04, BASH v5.2.21
+=============================================================
+
+
+--------------------------------------------------------------
+STEP 1: Application Launch — License Key Prompt
+--------------------------------------------------------------
+
+  ╔════════════════════════════════════════════════════════════════════════╗
+  ║                                                                        ║
+  ║   ██████╗ ███████╗███████╗██╗  ████████╗███████╗ ██████╗██╗  ██╗       ║
+  ║   ██╔══██╗██╔════╝██╔════╝██║  ╚══██╔══╝██╔════╝██╔════╝██║  ██║       ║
+  ║   ██║  ██║█████╗  █████╗  ██║     ██║   █████╗  ██║     ███████║       ║
+  ║   ██║  ██║██╔══╝  ██╔══╝  ██║     ██║   ██╔══╝  ██║     ██╔══██║       ║
+  ║   ██████╔╝███████╗███████╗███████╗██║   ███████╗╚██████╗██║  ██║       ║
+  ║   ╚═════╝ ╚══════╝╚══════╝╚══════╝╚═╝   ╚══════╝ ╚═════╝╚═╝  ╚═╝       ║
+  ║                                                                        ║
+  ║              Faculty Account Automation System                          ║
+  ║                 DeelTech Solutions  v1.0                                ║
+  ║                                                                        ║
+  ╚════════════════════════════════════════════════════════════════════════╝
+
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [i] No valid license found on this system.
+
+  Please enter your 16-digit DeelTech license key.
+    (Format: XXXXXXXXXXXXXXXX)
+
+  License Key:
+
+
+--------------------------------------------------------------
+STEP 2: License Accepted — Main Menu
+--------------------------------------------------------------
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                   License Verification                   │
+  └──────────────────────────────────────────────────────────┘
+
+  [i] No valid license found on this system.
+
+  Please enter your 16-digit DeelTech license key.
+    (Format: XXXXXXXXXXXXXXXX)
+
+  License Key: HIDDEN
+
+  [✓] License activated successfully!
+  [i] License file saved. You will not be prompted again.
+
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]:
+
+
+--------------------------------------------------------------
+STEP 3: Option 1 — Web Scraper Results (42 Faculty Parsed)
+--------------------------------------------------------------
+
+  ┌──────────────────────────────────────────────────────────┐
+  │            Scraping TNTech CS Faculty & Staff            │
+  └──────────────────────────────────────────────────────────┘
+
+  [i] Downloading faculty page...
+  [i] URL: https://www.tntech.edu/engineering/programs/csc/faculty-and-staff.php
+
+  [✓] Page downloaded successfully.
+  [i] Parsing faculty and staff names...
+
+  ──────────────────────────────────────────────────────────
+  #    First Name           Last Name
+  ──────────────────────────────────────────────────────────
+  1    Gerald               Gannod
+  2    Maanak               Gupta
+  3    William              Eberle
+  4    Sheikh               Ghafoor
+  5    Stacy                Prowell
+  6    Anthony              Skjellum
+  7    Doug                 Talbert
+  8    Amr                  Hilal
+  9    Muhammad             Ismail
+  10   Michael              Rogers
+  11   Susmit               Shannigrahi
+  12   Amani                Altarawneh
+  13   Prantar              Ghosh
+  14   MD                   Nine
+  15   Mir                  Pritom
+  16   Jesse                Roberts
+  17   Eric                 Brown
+  18   Travis               Brummett
+  19   April                Crockett
+  20   Benjamin             Burchfield
+  21   Beata                Kubiak
+  22   Jacob                Strickler
+  23   Regis                Billings
+  24   Cristina             Radian
+  25   Callie               Stewart
+  26   Brandon              Vandergriff
+  27   Barbara              Gannod
+  28   Dennis               Jump
+  29   Travis               Lee
+  30   Riley                Shipley
+  31   David                Elizandro
+  32   Martha               Kosa
+  33   Ambareen             Siraj
+  34   Mary                 Daniels
+  35   Robin                Eberle
+  36   Danyelle             Hawkins
+  37   Jennifer             Murphy
+  38   Amy                  Davis
+  39   Emily                Disbrow
+  40   Rebecca              Hahnert
+  41   Sonya                Haney
+  42   Corbin               Cawood
+  ──────────────────────────────────────────────────────────
+  Total: 42 faculty/staff members found.
+
+  Proceed with user account creation? (y/n):
+
+
+--------------------------------------------------------------
+STEP 4: Option 1 — User Account Creation (42 Accounts)
+--------------------------------------------------------------
+
+  ┌──────────────────────────────────────────────────────────┐
+  │                  Creating User Accounts                  │
+  └──────────────────────────────────────────────────────────┘
+
+  [✓] Created user: gerald.gannod  (password set)
+  [✓] Created user: maanak.gupta  (password set)
+  [✓] Created user: william.eberle  (password set)
+  [✓] Created user: sheikh.ghafoor  (password set)
+  [✓] Created user: stacy.prowell  (password set)
+  [✓] Created user: anthony.skjellum  (password set)
+  [✓] Created user: doug.talbert  (password set)
+  [✓] Created user: amr.hilal  (password set)
+  [✓] Created user: muhammad.ismail  (password set)
+  [✓] Created user: michael.rogers  (password set)
+  [✓] Created user: susmit.shannigrahi  (password set)
+  [✓] Created user: amani.altarawneh  (password set)
+  [✓] Created user: prantar.ghosh  (password set)
+  [✓] Created user: md.nine  (password set)
+  [✓] Created user: mir.pritom  (password set)
+  [✓] Created user: jesse.roberts  (password set)
+  [✓] Created user: eric.brown  (password set)
+  [✓] Created user: travis.brummett  (password set)
+  [✓] Created user: april.crockett  (password set)
+  [✓] Created user: benjamin.burchfield  (password set)
+  [✓] Created user: beata.kubiak  (password set)
+  [✓] Created user: jacob.strickler  (password set)
+  [✓] Created user: regis.billings  (password set)
+  [✓] Created user: cristina.radian  (password set)
+  [✓] Created user: callie.stewart  (password set)
+  [✓] Created user: brandon.vandergriff  (password set)
+  [✓] Created user: barbara.gannod  (password set)
+  [✓] Created user: dennis.jump  (password set)
+  [✓] Created user: travis.lee  (password set)
+  [✓] Created user: riley.shipley  (password set)
+  [✓] Created user: david.elizandro  (password set)
+  [✓] Created user: martha.kosa  (password set)
+  [✓] Created user: ambareen.siraj  (password set)
+  [✓] Created user: mary.daniels  (password set)
+  [✓] Created user: robin.eberle  (password set)
+  [✓] Created user: danyelle.hawkins  (password set)
+  [✓] Created user: jennifer.murphy  (password set)
+  [✓] Created user: amy.davis  (password set)
+  [✓] Created user: emily.disbrow  (password set)
+  [✓] Created user: rebecca.hahnert  (password set)
+  [✓] Created user: sonya.haney  (password set)
+  [✓] Created user: corbin.cawood  (password set)
+
+  ──────────────────────────────────────────────────────────
+  Account Creation Summary
+  ──────────────────────────────────────────────────────────
+  Total processed:  42
+  Created:          42
+  Skipped (exist):  0
+  Failed:           0
+  ──────────────────────────────────────────────────────────
+
+
+--------------------------------------------------------------
+STEP 5: Option 2 — Manual Add User
+--------------------------------------------------------------
+
+  ┌──────────────────────────────────────────────────────────┐
+  │               Manual User Account Creation               │
+  └──────────────────────────────────────────────────────────┘
+
+  Enter first name: Matthew
+  Enter last name:  Billings
+
+  Username: matthew.billings
+  Password: HIDDEN
+
+  Create this user? (y/n): y
+  [✓] Created user: matthew.billings  (password set)
+
+
+--------------------------------------------------------------
+STEP 6: Option 3 — View Created Users
+--------------------------------------------------------------
+
+  ┌──────────────────────────────────────────────────────────┐
+  │              DeelTech Created User Accounts              │
+  └──────────────────────────────────────────────────────────┘
+
+  ──────────────────────────────────────────────────────────
+  Date/Time              Username             Full Name
+  ──────────────────────────────────────────────────────────
+  2026-04-12 21:34:08    gerald.gannod        Gerald Gannod
+  2026-04-12 21:34:08    maanak.gupta         Maanak Gupta
+  2026-04-12 21:34:08    william.eberle       William Eberle
+  2026-04-12 21:34:08    sheikh.ghafoor       Sheikh Ghafoor
+  2026-04-12 21:34:08    stacy.prowell        Stacy Prowell
+  2026-04-12 21:34:08    anthony.skjellum     Anthony Skjellum
+  2026-04-12 21:34:08    doug.talbert         Doug Talbert
+  2026-04-12 21:34:08    amr.hilal            Amr Hilal
+  2026-04-12 21:34:09    muhammad.ismail      Muhammad Ismail
+  2026-04-12 21:34:09    michael.rogers       Michael Rogers
+  2026-04-12 21:34:09    susmit.shannigrahi   Susmit Shannigrahi
+  2026-04-12 21:34:09    amani.altarawneh     Amani Altarawneh
+  2026-04-12 21:34:09    prantar.ghosh        Prantar Ghosh
+  2026-04-12 21:34:09    md.nine              MD Nine
+  2026-04-12 21:34:09    mir.pritom           Mir Pritom
+  2026-04-12 21:34:09    jesse.roberts        Jesse Roberts
+  2026-04-12 21:34:09    eric.brown           Eric Brown
+  2026-04-12 21:34:09    travis.brummett      Travis Brummett
+  2026-04-12 21:34:09    april.crockett       April Crockett
+  2026-04-12 21:34:09    benjamin.burchfield  Benjamin Burchfield
+  2026-04-12 21:34:09    beata.kubiak         Beata Kubiak
+  2026-04-12 21:34:09    jacob.strickler      Jacob Strickler
+  2026-04-12 21:34:10    regis.billings       Regis Billings
+  2026-04-12 21:34:10    cristina.radian      Cristina Radian
+  2026-04-12 21:34:10    callie.stewart       Callie Stewart
+  2026-04-12 21:34:10    brandon.vandergriff  Brandon Vandergriff
+  2026-04-12 21:34:10    barbara.gannod       Barbara Gannod
+  2026-04-12 21:34:10    dennis.jump          Dennis Jump
+  2026-04-12 21:34:10    travis.lee           Travis Lee
+  2026-04-12 21:34:10    riley.shipley        Riley Shipley
+  2026-04-12 21:34:10    david.elizandro      David Elizandro
+  2026-04-12 21:34:10    martha.kosa          Martha Kosa
+  2026-04-12 21:34:10    ambareen.siraj       Ambareen Siraj
+  2026-04-12 21:34:10    mary.daniels         Mary Daniels
+  2026-04-12 21:34:10    robin.eberle         Robin Eberle
+  2026-04-12 21:34:10    danyelle.hawkins     Danyelle Hawkins
+  2026-04-12 21:34:11    jennifer.murphy      Jennifer Murphy
+  2026-04-12 21:34:11    amy.davis            Amy Davis
+  2026-04-12 21:34:11    emily.disbrow        Emily Disbrow
+  2026-04-12 21:34:11    rebecca.hahnert      Rebecca Hahnert
+  2026-04-12 21:34:11    sonya.haney          Sonya Haney
+  2026-04-12 21:34:11    corbin.cawood        Corbin Cawood
+  2026-04-12 21:35:42    matthew.billings     Matthew Billings
+  ──────────────────────────────────────────────────────────
+  Total created users: 43
+
+
+--------------------------------------------------------------
+STEP 7: Option 4 — Clean Exit
+--------------------------------------------------------------
+
+  Main Menu
+  ──────────────────────────────────────────────────────────
+  1) Scrape Faculty & Create Users  (default)
+  2) Add User Manually
+  3) View Created Users
+  4) Exit
+  ──────────────────────────────────────────────────────────
+
+  Select an option [1-4]: 4
+
+  [i] Thank you for using DeelTech Solutions.
+  Goodbye!
+
+
+=============================================================
+DEMO COMPLETE — All 4 menu options exercised successfully.
+=============================================================
