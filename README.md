@@ -9,9 +9,8 @@ Automated BASH tool for onboarding Tennessee Tech University CS Department facul
 ## Quick Start
 
 ```bash
-cd scripts/
-chmod +x main.sh
-sudo ./main.sh
+chmod +x scripts/main.sh
+sudo ./scripts/main.sh
 ```
 
 ## Project Structure
@@ -19,26 +18,49 @@ sudo ./main.sh
 ```
 .
 ├── scripts/
-│   └── main.sh              # Main application script
-├── phase1/                   # Phase 1 deliverables (presentation + code)
-├── phase2/                   # Phase 2 deliverables (code + user manual)
-├── phase3/                   # Phase 3 deliverables (CI/CD + presentation)
-├── .github/workflows/        # CI/CD pipeline configuration
+│   └── main.sh                  # Main application script
+├── docs/
+│   └── user_manual.md           # Usage manual and documentation
+├── presentation/
+│   └── Phase1_DeelTech_Solutions.pptx
+├── test/
+│   ├── demo/
+│   │   └── demo_walkthrough.txt # Full application demo output
+│   ├── 01_license_tests.txt     # License system test results
+│   ├── 02_menu_tests.txt        # Menu navigation tests
+│   ├── 03_scraper_tests.txt     # Web scraper tests
+│   ├── 04_manual_add_tests.txt  # Manual add user tests
+│   ├── 05_view_users_tests.txt  # View users tests
+│   ├── 06_exit_test.txt         # Exit handling test
+│   ├── 07_edge_cases.txt        # Edge case tests (EOF, SIGINT, etc.)
+│   └── 08_test_summary.txt      # Full regression summary (35/35 PASS)
+├── .github/workflows/
+│   └── ci.yml                   # CI/CD pipeline (ShellCheck + tests)
 └── README.md
 ```
 
-## Turn-In Folders
+## Features
 
-| Phase | Contents |
-|-------|----------|
-| `phase1/` | Planning presentation (.pptx), speaking script, initial code |
-| `phase2/` | Finalized code, user manual, deployment README |
-| `phase3/` | CI/CD config, retrospective presentation, speaking script |
+- **Web Scraper** — Downloads and parses the TNTech CS faculty page for 42+ names
+- **Batch User Creation** — Generates usernames (`first.last`) and passwords, creates Linux accounts
+- **Manual Add User** — Interactive prompt for adding individual accounts
+- **License Enforcement** — 16-digit key with obfuscated validation and persistent license file
+- **Input Validation** — Regex whitelisting, length checks, shell metacharacter rejection
+- **Signal Handling** — Clean exit on EOF, SIGINT, and SIGTERM
 
 ## Requirements
 
 - Ubuntu 24.04 LTS
 - BASH 5.2.21
 - Root/sudo access
-- curl or wget
+- curl
 - Internet connection (for web scraping)
+
+## Team
+
+| Name | Role |
+|------|------|
+| Beshoy Farag | Project Manager |
+| Canaan Jackson | Lead Developer |
+| Koby Zhang | DevOps Engineer |
+| Anthony Johnson | QA / Documentation Lead |
