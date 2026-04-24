@@ -127,7 +127,37 @@ jobs:
           echo "=== Configuration checks complete ==="
 
   # ─────────────────────────────────────────────────────────────
-  # Stage 3: Deploy — Deployment to target VM
+  # Stage 3: Package — Build and publish release artifact
+  # ─────────────────────────────────────────────────────────────
+  package:
+    name: Package Release Artifact
+    runs-on: ubuntu-24.04
+    needs: test
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build release tarball
+        run: |
+          echo "=== Packaging release ==="
+          mkdir -p dist
+          tar -czf dist/deeltech-release.tar.gz \
+            scripts/main.sh \
+            docs/user_manual.md \
+            README.md
+          ls -lh dist/
+          echo "=== Package built ==="
+
+      - name: Upload release artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: deeltech-release
+          path: dist/deeltech-release.tar.gz
+          retention-days: 30
+
+  # ─────────────────────────────────────────────────────────────
+  # Stage 4: Deploy — Deployment to target VM
   # ─────────────────────────────────────────────────────────────
   # This job is configured for manual trigger only.
   # In production, it would SSH into the target Ubuntu VM
