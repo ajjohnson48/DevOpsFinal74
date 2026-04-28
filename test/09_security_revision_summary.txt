@@ -1,0 +1,146 @@
+=============================================================
+TEST 9: PHASE 3 SECURITY REVISION — REGRESSION SUMMARY
+=============================================================
+Script: scripts/main.sh (feature/random-passwords)
+=============================================================
+--------------------------------------------------------------
+SECTION 1: TEST RESULTS BY CATEGORY
+--------------------------------------------------------------
+--- Test 1: License System (7 tests) ---
+  [PASS] 1a. Empty input x3 - lockout shown after 3 attempts
+  [PASS] 1b. Wrong short key ("ABC") - rejected with length error
+  [PASS] 1c. Wrong 16-char keys x3 - "Invalid license key" + lockout
+  [PASS] 1d. Correct key (5A7B9C1D3E5F7G9H) - accepted, exits cleanly
+  [PASS] 1e. Pre-existing valid license - prompt skipped
+  [PASS] 1f. Corrupted license file - re-prompted, accepts new key
+  [PASS] 1g. 3-strike lockout - non-zero exit code (1)
+
+--- Test 2: Menu Navigation (8 tests, range now 1-5) ---
+  [PASS] 2a. Invalid choice '0' - "Invalid option. Please select 1-5."
+  [PASS] 2b. Invalid choice '6' (above new range) - rejected with 1-5 msg
+  [PASS] 2c. Invalid choice '-1' - rejected
+  [PASS] 2d. Invalid choice 'abc' - rejected
+  [PASS] 2e. Empty input (Enter) - defaults to option 1 (scrape)
+  [PASS] 2f. Special chars '!@#' - rejected
+  [PASS] 2g. Option 3 (View Users, empty) - shows "No users have been created"
+  [PASS] 2h. Option 5 (Exit) - clean Goodbye
+
+--- Test 3: Web Scraper (4 tests) ---
+  [PASS] 3a. Full scrape & create - 42 users created
+  [PASS] 3b. Name count - 42 users in log (within ~42 expected)
+  [PASS] 3c. Garbage check - no box-drawing/status chars in user log
+  [PASS] 3d. Second scrape - all 42 already-exists skipped
+
+--- Test 4: Manual Add User (10 tests) ---
+  [PASS] 4a. Normal names (Testfirst Testlast) - created
+  [PASS] 4b. Empty first - "Both first and last name are required"
+  [PASS] 4c. Empty last - same rejection
+  [PASS] 4d. Space in first ("Mary Jane") - "invalid characters"
+  [PASS] 4e. Shell metachar (test;whoami) - rejected
+  [PASS] 4f. >32-char username - "exceeds 32-character limit"
+  [PASS] 4g. Apostrophe+hyphen (O'Brien Smith-Jones) - accepted
+  [PASS] 4h. Duplicate - "already exists. Skipping"
+  [PASS] 4i. Decline confirmation (n) - "User creation cancelled"
+  [PASS] 4j. Metachar variants (test|cat, ${HOME}, $(whoami)) - all rejected
+
+--- Test 5: View Users (1+1 tests, +leak check) ---
+  [PASS] 5a. View created users - shows total + table
+  [PASS] 5a-leak. No credential-row format in view output
+                 (no "DATE | username | password | name" lines)
+
+--- Test 6: Exit (1 test) ---
+  [PASS] 6a. Option 5 exits cleanly with Goodbye
+
+--- Test 7: Edge Cases (4 tests) ---
+  [PASS] 7a. EOF on stdin - "End of input detected"
+  [PASS] 7b. SIGINT/TERM trap present (line 635)
+  [PASS] 7c. Massive input (10k chars) - handled gracefully
+  [PASS] 7d. Null bytes - handled, output produced
+
+--- Test 9: Security Revision (11 tests, NEW) ---
+  [PASS] 9a. New users get 12-char passwords
+  [PASS] 9b. All passwords alphanumeric (^[A-Za-z0-9]+$)
+  [PASS] 9c. Consecutive new users get DIFFERENT random passwords
+  [PASS] 9d. /root/deeltech/credentials.txt mode == 600
+  [PASS] 9e. /root/deeltech/credentials.txt owner == root:root
+  [PASS] 9f. chage -l shows "password must be changed" on new account
+  [PASS] 9g. rotate_all_passwords runs, summary shows Rotated: 2
+  [PASS] 9h. Rotate after userdel - "Missing: 1" (skips deleted user)
+  [PASS] 9i. Credentials file is APPENDED, not overwritten on rotate
+  [PASS] 9j. Old "FirstnameLastnameDEELTECH" hash differs from current
+             (cryptographic confirmation that deterministic pw is replaced)
+  [PASS] 9k. View Users does not leak credential rows
+
+--------------------------------------------------------------
+SECTION 2: NEW FEATURE VERIFICATION
+--------------------------------------------------------------
+
+Random Password Generation:
+  STATUS: VERIFIED
+  EVIDENCE: generate_password() reads /dev/urandom, filters to A-Za-z0-9
+  via tr -dc, head -c 12. Tests 9a/9b/9c verify length (12), charset
+  (alphanumeric only), and uniqueness across consecutive calls.
+
+Credentials File Hardening:
+  STATUS: VERIFIED
+  EVIDENCE: write_credential() sets umask 077, install -d -m 700 for the
+  directory, install -m 600 -o root -g root for the file. Tests 9d/9e
+  confirm the on-disk mode (600) and owner (root:root). Same protection
+  model as /etc/shadow.
+
+Forced Password Change at First Login (chage -d 0):
+  STATUS: VERIFIED
+  EVIDENCE: Both create_user() and rotate_all_passwords() call
+  `chage -d 0 "$username"` after chpasswd succeeds. Test 9f runs
+  `chage -l alpha.one` and confirms the "Password must be changed"
+  marker is present.
+
+Password Rotation (Menu Option 4):
+  STATUS: VERIFIED
+  EVIDENCE: rotate_all_passwords() reads usernames from
+  CREATED_USERS_LOG (never /etc/passwd), confirms with y/n, generates
+  new random password per user, runs chpasswd + chage -d 0, appends a
+  "(rotated)" tagged row to the credentials file. Tests 9g/9h/9i verify
+  the rotation summary, the missing-user skip path, and the append
+  semantics. Test 9j confirms cryptographically that the old
+  deterministic password is no longer the active one.
+
+Source-of-truth invariant:
+  STATUS: VERIFIED
+  EVIDENCE: Rotation reads only from CREATED_USERS_LOG. Manual
+  inspection confirms `root`, `nobody`, `systemd-resolve`, `ubuntu`,
+  and other system accounts are never touched.
+
+--------------------------------------------------------------
+SECTION 3: NEW BUGS DISCOVERED
+--------------------------------------------------------------
+
+No new bugs discovered during the security-revision regression pass.
+
+--------------------------------------------------------------
+SECTION 4: TEST SCORE
+--------------------------------------------------------------
+
+Total tests:  47
+Passed:       47
+Failed:        0
+Pass rate:   100%
+
+Pre-revision tests retained: 35/35 still PASS
+Security-revision tests added: 11 new (all PASS)
+
+--------------------------------------------------------------
+OVERALL VERDICT: READY TO SHIP
+--------------------------------------------------------------
+The Phase 3 security revision is functionally complete.
+- Deterministic firstname+lastname+DEELTECH passwords are eliminated.
+- All new accounts receive a 12-char random alphanumeric password.
+- Credentials are persisted to /root/deeltech/credentials.txt with
+  mode 600 and root ownership.
+- chage -d 0 forces a password change on first login.
+- Existing accounts can be rotated via menu option 4 in response to
+  a compromise; rotation is non-destructive (skips removed users)
+  and audit-friendly (appends, never overwrites).
+- All 35 prior regression tests still pass; 11 new security tests
+  also pass; two consecutive clean rounds confirm stability.
+=============================================================
