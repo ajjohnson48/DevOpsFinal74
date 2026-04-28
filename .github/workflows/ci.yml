@@ -89,6 +89,9 @@ jobs:
             "create_user"
             "batch_create_users"
             "manual_add_user"
+            "generate_password"
+            "rotate_all_passwords"
+            "write_credential"
             "main"
           )
           MISSING=0
@@ -114,8 +117,9 @@ jobs:
             "FACULTY_URL"
             "LICENSE_DIR"
             "LICENSE_FILE"
-            "PASSWORD_SUFFIX"
             "CREATED_USERS_LOG"
+            "CREDENTIALS_DIR"
+            "CREDENTIALS_FILE"
           )
           for var in "${REQUIRED_VARS[@]}"; do
             if grep -q "$var" "$MAIN_SCRIPT"; then

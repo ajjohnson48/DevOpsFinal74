@@ -35,8 +35,9 @@ RESET='\033[0m'
 FACULTY_URL="https://www.tntech.edu/engineering/programs/csc/faculty-and-staff.php"
 LICENSE_DIR="/etc/deeltech"
 LICENSE_FILE="${LICENSE_DIR}/.dtk_sys.dat"
-PASSWORD_SUFFIX="DEELTECH"
 CREATED_USERS_LOG="/var/log/deeltech_created_users.log"
+CREDENTIALS_DIR="/root/deeltech"
+CREDENTIALS_FILE="${CREDENTIALS_DIR}/credentials.txt"
 
 # ──────────────────────────────────────────────────────────────────
 # Utility Functions
@@ -289,6 +290,38 @@ check_root() {
     return 0
 }
 
+# Generate a 12-character alphanumeric password from /dev/urandom.
+generate_password() {
+    tr -dc 'A-Za-z0-9' </dev/urandom | head -c 12
+    echo ""
+}
+
+# Append one credential row to the credentials file (mode 600, root-owned).
+# Arguments: $1 = username, $2 = full name, $3 = password, $4 = optional tag (e.g. "(rotated)")
+write_credential() {
+    local username="$1"
+    local fullname="$2"
+    local password="$3"
+    local tag="$4"
+
+    umask 077
+    install -d -m 700 -o root -g root "$CREDENTIALS_DIR" 2>/dev/null || mkdir -p "$CREDENTIALS_DIR"
+    if [[ ! -f "$CREDENTIALS_FILE" ]]; then
+        install -m 600 -o root -g root /dev/null "$CREDENTIALS_FILE" 2>/dev/null || {
+            : > "$CREDENTIALS_FILE"
+            chmod 600 "$CREDENTIALS_FILE"
+        }
+    fi
+
+    printf '%s | %-22s | %-12s | %s%s\n' \
+        "$(date '+%Y-%m-%d %H:%M:%S')" \
+        "$username" \
+        "$password" \
+        "$fullname" \
+        "${tag:+ $tag}" \
+        >> "$CREDENTIALS_FILE"
+}
+
 # Create a single user account.
 # Arguments: $1 = first name, $2 = last name
 create_user() {
@@ -311,14 +344,15 @@ create_user() {
         return 1
     fi
 
-    # Generate password: firstnamelastnameDEELTECH (preserve original casing)
-    local password="${first}${last}${PASSWORD_SUFFIX}"
-
     # Check if user already exists
     if id "$username" &>/dev/null; then
         print_warn "User '${username}' already exists. Skipping."
         return 2
     fi
+
+    # Generate a random 12-character password (security revision — Phase 3)
+    local password
+    password=$(generate_password)
 
     # Create the user account
     useradd -m -s /bin/bash "$username" 2>/dev/null
@@ -327,17 +361,21 @@ create_user() {
         return 1
     fi
 
-    # Set the password
+    # Set the password (never echoed to stdout — written only to credentials file)
     echo "${username}:${password}" | chpasswd 2>/dev/null
     if [[ $? -ne 0 ]]; then
         print_error "Failed to set password for '${username}'."
         return 1
     fi
 
-    # Log the creation
-    echo "$(date '+%Y-%m-%d %H:%M:%S') | Created user: ${username} | Name: ${first} ${last}" >> "$CREATED_USERS_LOG"
+    # Force password change at first login (chage -d 0 sets last-change date to epoch)
+    chage -d 0 "$username" 2>/dev/null
 
-    print_success "Created user: ${BOLD}${username}${RESET}  ${DIM}(password set)${RESET}"
+    # Log creation (no password) and write credential row (with password, mode 600)
+    echo "$(date '+%Y-%m-%d %H:%M:%S') | Created user: ${username} | Name: ${first} ${last}" >> "$CREATED_USERS_LOG"
+    write_credential "$username" "${first} ${last}" "$password"
+
+    print_success "Created user: ${BOLD}${username}${RESET}  ${DIM}(random pw + first-login change)${RESET}"
     return 0
 }
 
@@ -378,6 +416,81 @@ batch_create_users() {
     echo -e "  ${YELLOW}Skipped (exist):${RESET}  $skipped"
     echo -e "  ${RED}Failed:${RESET}           $failed"
     print_hr
+    echo ""
+}
+
+# Rotate passwords for every user previously created by this script.
+# Source of truth: $CREATED_USERS_LOG (never /etc/passwd) — guarantees we
+# only touch users this script created.
+rotate_all_passwords() {
+    check_root || return 1
+
+    if [[ ! -f "$CREATED_USERS_LOG" ]]; then
+        print_error "No user log found at $CREATED_USERS_LOG. Nothing to rotate."
+        return 1
+    fi
+
+    print_header "Rotating Passwords (Security Response)"
+    print_warn "This will invalidate all existing user passwords."
+    echo -ne "  ${YELLOW}Continue? (y/n): ${RESET}"
+    read -r confirm || confirm="n"
+    if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+        print_info "Rotation cancelled."
+        return 0
+    fi
+
+    local total=0 rotated=0 missing=0 failed=0
+    local usernames
+    usernames=$(awk -F'|' '{
+        u=$2;
+        gsub(/^ +| +$/, "", u);
+        sub(/^Created user: /, "", u);
+        if (u != "") print u
+    }' "$CREATED_USERS_LOG" | sort -u)
+
+    while IFS= read -r username; do
+        [[ -z "$username" ]] && continue
+        (( total++ ))
+
+        if ! id "$username" &>/dev/null; then
+            print_warn "Skipping ${username} — account no longer exists."
+            (( missing++ ))
+            continue
+        fi
+
+        local newpass
+        newpass=$(generate_password)
+
+        if echo "${username}:${newpass}" | chpasswd 2>/dev/null; then
+            chage -d 0 "$username" 2>/dev/null
+            local fullname
+            fullname=$(awk -F'|' -v u=" Created user: ${username} " '
+                index($2, u) > 0 {
+                    sub(/^ *Name: /, "", $3);
+                    gsub(/^ +| +$/, "", $3);
+                    print $3;
+                    exit
+                }
+            ' "$CREATED_USERS_LOG")
+            write_credential "$username" "${fullname:-unknown}" "$newpass" "(rotated)"
+            print_success "Rotated: ${username}"
+            (( rotated++ ))
+        else
+            print_error "Failed to rotate ${username}"
+            (( failed++ ))
+        fi
+    done <<< "$usernames"
+
+    echo ""
+    print_hr
+    echo -e "  ${BOLD}${WHITE}Rotation Summary${RESET}"
+    print_hr
+    echo -e "  ${WHITE}Total:${RESET}    $total"
+    echo -e "  ${GREEN}Rotated:${RESET}  $rotated"
+    echo -e "  ${YELLOW}Missing:${RESET}  $missing"
+    echo -e "  ${RED}Failed:${RESET}   $failed"
+    print_hr
+    print_info "Updated credentials in: $CREDENTIALS_FILE"
     echo ""
 }
 
@@ -439,17 +552,19 @@ manual_add_user() {
 
     local username
     username=$(echo "${first_name}.${last_name}" | tr '[:upper:]' '[:lower:]')
-    local password="${first_name}${last_name}${PASSWORD_SUFFIX}"
 
     echo ""
     echo -e "  ${WHITE}Username:${RESET} $username"
-    echo -e "  ${WHITE}Password:${RESET} ${password}"
+    echo -e "  ${WHITE}Password:${RESET} ${DIM}(random — recorded in $CREDENTIALS_FILE after creation)${RESET}"
     echo ""
     echo -ne "  ${YELLOW}Create this user? (y/n): ${RESET}"
     read -r confirm || confirm="n"
 
     if [[ "$confirm" =~ ^[Yy]$ ]]; then
         create_user "$first_name" "$last_name"
+        if [[ $? -eq 0 ]]; then
+            print_info "Password recorded in $CREDENTIALS_FILE"
+        fi
     else
         print_info "User creation cancelled."
     fi
@@ -501,7 +616,8 @@ show_menu() {
     echo -e "  ${CYAN}1)${RESET} Scrape Faculty & Create Users  ${DIM}(default)${RESET}"
     echo -e "  ${CYAN}2)${RESET} Add User Manually"
     echo -e "  ${CYAN}3)${RESET} View Created Users"
-    echo -e "  ${CYAN}4)${RESET} Exit"
+    echo -e "  ${CYAN}4)${RESET} Rotate All Passwords  ${DIM}(security response)${RESET}"
+    echo -e "  ${CYAN}5)${RESET} Exit"
     print_hr
     echo ""
 }
@@ -521,7 +637,7 @@ main() {
     # Main menu loop
     while true; do
         show_menu
-        echo -ne "  ${CYAN}Select an option [1-4]: ${RESET}"
+        echo -ne "  ${CYAN}Select an option [1-5]: ${RESET}"
         read -r choice || { echo ""; print_info "End of input detected. Exiting."; exit 0; }
 
         # Default to option 1 if user just presses Enter
@@ -538,6 +654,9 @@ main() {
                 view_created_users
                 ;;
             4)
+                rotate_all_passwords
+                ;;
+            5)
                 echo ""
                 print_info "Thank you for using DeelTech Solutions."
                 echo -e "  ${DIM}Goodbye!${RESET}"
@@ -545,7 +664,7 @@ main() {
                 exit 0
                 ;;
             *)
-                print_error "Invalid option. Please select 1-4."
+                print_error "Invalid option. Please select 1-5."
                 ;;
         esac
 

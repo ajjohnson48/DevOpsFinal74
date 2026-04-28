@@ -42,11 +42,20 @@ sudo ./scripts/main.sh
 ## Features
 
 - **Web Scraper** — Downloads and parses the TNTech CS faculty page for 42+ names
-- **Batch User Creation** — Generates usernames (`first.last`) and passwords, creates Linux accounts
+- **Batch User Creation** — Generates usernames (`first.last`) and 12-character random passwords, creates Linux accounts
 - **Manual Add User** — Interactive prompt for adding individual accounts
+- **Password Rotation** — Menu option 4 rotates every previously created account's password (incident response)
 - **License Enforcement** — 16-digit key with obfuscated validation and persistent license file
 - **Input Validation** — Regex whitelisting, length checks, shell metacharacter rejection
 - **Signal Handling** — Clean exit on EOF, SIGINT, and SIGTERM
+
+## Security Model
+
+- **Random passwords** — 12 alphanumeric characters per user, generated from `/dev/urandom`. Never echoed to the terminal.
+- **First-login change forced** — every account is created (or rotated) with `chage -d 0`, so the user must change their password on first login. The plaintext password is a one-shot delivery token.
+- **Credentials file** — written to `/root/deeltech/credentials.txt` with mode `600`, owned by root. Same protection model as `/etc/shadow`.
+- **Rotation** — menu option 4 reads the script's user log (never `/etc/passwd`) and rotates only accounts this script created. New passwords are appended to the credentials file with a `(rotated)` tag.
+- **Dissemination** — the admin emails the credentials file to the responsible party out-of-band, then runs `shred -u` after receipt is confirmed. See `docs/user_manual.md` §9 for details.
 
 ## Requirements
 

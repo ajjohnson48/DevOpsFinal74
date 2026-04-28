@@ -119,10 +119,11 @@ After license verification, the main menu is displayed:
   1) Scrape Faculty & Create Users  (default)
   2) Add User Manually
   3) View Created Users
-  4) Exit
+  4) Rotate All Passwords  (security response)
+  5) Exit
   ──────────────────────────────────────────────────────────
 
-  Select an option [1-4]:
+  Select an option [1-5]:
 ```
 
 Pressing Enter without typing a number defaults to **Option 1**.
@@ -173,7 +174,8 @@ The script prompts:
 **Step 5 — Create accounts:**
 If confirmed, the script creates a Linux user account for each parsed name. For each user:
 - A username is generated in the format `first.last` (lowercase).
-- A password is set in the format `FirstLastDEELTECH`.
+- A 12-character random alphanumeric password is generated from `/dev/urandom`. The password is **never displayed on the terminal** — it is written only to the credentials file at `/root/deeltech/credentials.txt` (mode `600`, root-owned).
+- `chage -d 0` is applied so the user must change the password on first login.
 - A home directory is created at `/home/first.last`.
 - The default shell is set to `/bin/bash`.
 - If a user already exists, it is skipped with a warning.
@@ -204,14 +206,14 @@ This option allows you to create a single user account by manually entering a fi
   Enter last name:  Smith
 
   Username: john.smith
-  Password: JohnSmithDEELTECH
+  Password: (random — recorded in /root/deeltech/credentials.txt after creation)
 
   Create this user? (y/n):
 ```
 
 - Both fields are required. If either is left blank, an error is displayed.
 - Leading and trailing whitespace is trimmed from the entered names.
-- The generated username and password are displayed for confirmation before creation.
+- The username is shown for confirmation. The password is generated only after you confirm and is written to the credentials file — it is not displayed on the terminal.
 - Enter `y` or `Y` to create the account, or `n` to cancel.
 
 ---
@@ -235,7 +237,38 @@ This data is read from the log file at `/var/log/deeltech_created_users.log`. If
 
 ---
 
-### Option 4: Exit
+### Option 4: Rotate All Passwords
+
+This option is the **security incident response** workflow. It generates a new random 12-character password for every user previously created by this script and rewrites their account passwords. New credentials are appended to `/root/deeltech/credentials.txt` with a `(rotated)` tag.
+
+**When to use:**
+- A breach is suspected or confirmed.
+- The default-password scheme (used by older versions of the script) needs to be invalidated across all existing accounts.
+- A scheduled rotation policy requires it.
+
+**Behavior:**
+- Reads the script's user log at `/var/log/deeltech_created_users.log` to determine which accounts to rotate. The script never reads `/etc/passwd` directly, so system accounts (`root`, `nobody`, `systemd-resolve`, etc.) are **never** touched.
+- For each logged user:
+  - If the account no longer exists in `/etc/passwd`, it is skipped and counted as `Missing`.
+  - Otherwise, a new 12-character password is generated, set via `chpasswd`, and `chage -d 0` is applied so the user must change the password on next login.
+  - The new credential is appended to `/root/deeltech/credentials.txt`.
+- A summary is shown:
+
+```
+  Rotation Summary
+  ──────────────────────────────────────────────────────────
+  Total:    42
+  Rotated:  42
+  Missing:  0
+  Failed:   0
+  ──────────────────────────────────────────────────────────
+```
+
+After rotation, the credentials file should be transmitted to the responsible administrator out of band (see §9 — *Disseminating Credentials*) and then `shred -u`'d once receipt is confirmed.
+
+---
+
+### Option 5: Exit
 
 Displays a goodbye message and terminates the application.
 
@@ -250,10 +283,10 @@ Displays a goodbye message and terminates the application.
 
 All user accounts follow a consistent naming and password scheme:
 
-| Field    | Format                       | Example (for "John Smith")   |
-|----------|------------------------------|------------------------------|
-| Username | `firstname.lastname`         | `john.smith`                 |
-| Password | `FirstnameLastnameDEELTECH`  | `JohnSmithDEELTECH`         |
+| Field    | Format                                       | Example (for "John Smith")   |
+|----------|----------------------------------------------|------------------------------|
+| Username | `firstname.lastname`                         | `john.smith`                 |
+| Password | 12 random alphanumeric chars (`/dev/urandom`)| `aB3xK9pQ2mR7`               |
 
 **Username rules:**
 - The username is composed of the first name and last name separated by a period.
@@ -261,9 +294,24 @@ All user accounts follow a consistent naming and password scheme:
 - For names parsed from the web page, the first word is used as the first name and the last word is used as the last name.
 
 **Password rules:**
-- The password is composed of the first name followed by the last name followed by the suffix `DEELTECH`.
-- The original capitalization of the first and last name is preserved in the password.
-- For scraped names, the capitalization as it appears on the web page is used.
+- Each password is generated independently from `/dev/urandom` and consists of 12 alphanumeric characters drawn from `[A-Za-z0-9]`. Special characters are intentionally excluded to keep passwords safe to copy/paste, type at a terminal, and embed in shell tooling.
+- Passwords are **never echoed to the terminal**. They are persisted only to `/root/deeltech/credentials.txt` (mode `600`, owner `root:root`).
+- Every newly created or rotated account has `chage -d 0` applied. This forces the user to change the password at first login, so the random password the script generates is effectively a one-shot delivery token.
+
+**Credentials file format:**
+
+```
+YYYY-MM-DD HH:MM:SS | username               | password     | Full Name [tag]
+```
+
+Example:
+
+```
+2026-04-27 19:30:11 | john.smith             | aB3xK9pQ2mR7 | John Smith
+2026-04-27 19:31:02 | ambareen.siraj         | qZ8nM4pK7vR1 | Ambareen Siraj (rotated)
+```
+
+The `(rotated)` tag identifies rows written by **Option 4** (password rotation). Rows without a tag are first-time creations.
 
 ---
 
@@ -343,23 +391,62 @@ The HTML structure of the TNTech faculty page may have changed. Verify the page 
 
 ## 9. Security Considerations
 
-### Temporary Passwords
+### Random Passwords (Phase 3 Security Revision)
 
-The passwords generated by this tool are intended as **temporary initial passwords**. They follow a predictable pattern based on the user's name. It is strongly recommended that all users be required to change their password upon first login.
+Earlier versions of this tool generated deterministic passwords of the form `FirstnameLastnameDEELTECH`, which proved trivially guessable. This release replaces that scheme with **12-character random alphanumeric passwords** drawn from `/dev/urandom` (a kernel-grade CSPRNG). Each password is independent of the user's name and of every other password in the system.
 
-To force a password change on first login for a specific user:
+### Forced Password Change at First Login
 
-```bash
-sudo passwd --expire username
-```
+Every account created or rotated by this script has `chage -d 0 <username>` applied automatically. This sets the user's last-password-change date to epoch zero, which Linux interprets as "must be changed before the user can reach a shell." The plaintext password the script writes to the credentials file is therefore a **one-shot delivery token** — valid for exactly one login, then dead.
 
-### Password Storage Improvement
-
-The current implementation sets passwords using the `chpasswd` utility with plaintext password strings. For production deployments, the recommended improvement is to hash passwords using **SHA-512** before passing them to the system. This can be accomplished with:
+You can verify this is in effect for any user with:
 
 ```bash
-echo "username:$(openssl passwd -6 'password')" | chpasswd -e
+sudo chage -l john.smith
+# Output should include: "Password expires : password must be changed"
 ```
+
+### Credentials File
+
+The credentials file at `/root/deeltech/credentials.txt` contains username/password pairs in plaintext. It is created with:
+
+- Owner `root:root`
+- Mode `600` (read/write for root only — same protection model as `/etc/shadow`)
+- Parent directory `/root/deeltech` at mode `700`
+- `umask 077` set before writing, so file creation never has a window of looser permissions
+
+No other file in the system contains plaintext passwords — the kernel will refuse `cat` to anyone other than root.
+
+### Password Rotation (Incident Response)
+
+**Option 4 — Rotate All Passwords** is the script's incident-response workflow. Use it when:
+
+- A breach is suspected, confirmed, or being audited.
+- Users have not changed their initial passwords (the original incident scenario).
+- A scheduled rotation policy is in effect.
+
+The function reads `/var/log/deeltech_created_users.log` to determine which accounts to rotate. **Only accounts this script created are touched.** System accounts (`root`, `nobody`, `systemd-resolve`, etc.) are never seen by the rotation logic because they are not in the script's user log. If an account in the log no longer exists in `/etc/passwd` (e.g., an admin ran `userdel`), it is counted as `Missing` and skipped.
+
+### Disseminating Credentials
+
+After running batch creation or rotation, the credentials file must be transmitted to the responsible administrator (typically Mr. Billings, per the Phase 3 task) so individual passwords can be communicated to the affected users. Recommended workflow:
+
+1. **Encrypt before transmission.** Either GPG-encrypt with the recipient's public key:
+   ```bash
+   gpg --encrypt --recipient billings@tntech.edu /root/deeltech/credentials.txt
+   ```
+   …or use a password-protected zip and communicate the zip password out-of-band (text message or phone call):
+   ```bash
+   zip -e credentials.zip /root/deeltech/credentials.txt
+   ```
+2. **Send via email**, attaching only the encrypted artifact.
+3. **Confirm receipt** with the recipient through a separate channel.
+4. **Securely delete the local plaintext** after receipt is confirmed:
+   ```bash
+   sudo shred -u /root/deeltech/credentials.txt
+   ```
+
+Combined with `chage -d 0`, even a residual disk-forensics recovery yields passwords that are already invalidated by the time the recovery is performed.
 
 ### License File Protection
 
